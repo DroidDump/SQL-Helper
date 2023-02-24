@@ -1,4 +1,4 @@
 # OraclePLSQL
 
 
-Mobile site oracleplsql.ru
+Справочник SQL
