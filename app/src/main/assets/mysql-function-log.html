@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script data-rocketlazyloadscript='https://www.googletagmanager.com/gtag/js?id=UA-139248612-1' async ></script>
+<script data-rocketlazyloadscript='data:text/javascript;base64,CiAgd2luZG93LmRhdGFMYXllciA9IHdpbmRvdy5kYXRhTGF5ZXIgfHwgW107CiAgZnVuY3Rpb24gZ3RhZygpe2RhdGFMYXllci5wdXNoKGFyZ3VtZW50cyk7fQogIGd0YWcoJ2pzJywgbmV3IERhdGUoKSk7CgogIGd0YWcoJ2NvbmZpZycsICdVQS0xMzkyNDg2MTItMScpOwo=' ></script>	
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width" />
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="https://oracleplsql.ru/xmlrpc.php" />
+<!--[if lt IE 9]>
+<script src="https://oracleplsql.ru/wp-content/themes/f2/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+
+<script data-rocketlazyloadscript='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' async ></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8777261894857145",
+          enable_page_level_ads: true
+     });
+</script>
+
+<title>MySQL функция LOG &#8212; Oracle PL/SQL •MySQL •MariaDB •SQL Server •SQLite</title><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT%20Serif%7CPrata%7CBitter%3A700%7CGudea%3A400%2C700%2C400italic&#038;display=swap" /><link rel="stylesheet" href="wp-content/cache/min/1/fa8990c4217289171489528cd3f70146.css" media="all" data-minify="1" />
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='https://fonts.googleapis.com/' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="Oracle PL/SQL •MySQL •MariaDB •SQL Server •SQLite &raquo; Лента" href="feed.html" />
+<link rel="alternate" type="application/rss+xml" title="Oracle PL/SQL •MySQL •MariaDB •SQL Server •SQLite &raquo; Лента комментариев" href="comments/feed.html" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	
+
+
+
+
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('index.html%3Fp=2825.html');--wp--preset--duotone--grayscale: url('index.html%3Fp=2825.html');--wp--preset--duotone--purple-yellow: url('index.html%3Fp=2825.html');--wp--preset--duotone--blue-red: url('index.html%3Fp=2825.html');--wp--preset--duotone--midnight: url('index.html%3Fp=2825.html');--wp--preset--duotone--magenta-yellow: url('index.html%3Fp=2825.html');--wp--preset--duotone--purple-green: url('index.html%3Fp=2825.html');--wp--preset--duotone--blue-orange: url('index.html%3Fp=2825.html');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+
+
+<link rel='stylesheet' id='print-css' href='wp-content/themes/f2/print.css%3Fver=2.2.3.css' type='text/css' media='print' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='ie-style-css' href='https://oracleplsql.ru/wp-content/themes/f2/ie.css?ver=2.2.3' type='text/css' media='screen, projection' />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='ie7-style-css' href='https://oracleplsql.ru/wp-content/themes/f2/ie7.css?ver=2.2.3' type='text/css' media='screen, projection' />
+<![endif]-->
+<script type='text/javascript' src='https://oracleplsql.ru/wp-includes/js/jquery/jquery.min.js?ver=3.6.1' id='jquery-core-js' defer></script>
+
+
+
+<link rel="https://api.w.org/" href="wp-json/index.html" /><link rel="alternate" type="application/json" href="wp-json/wp/v2/posts/2825" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc.php%3Frsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://oracleplsql.ru/wp-includes/wlwmanifest.xml" />
+<meta name="generator" content="WordPress 6.1.1" />
+<link rel="canonical" href="index.html%3Fp=2825.html" />
+<link rel='shortlink' href='index.html%3Fp=2825.html' />
+<!-- Customized F2 styles -->
+<style type="text/css">
+/*div frontpage*/ 
+
+/*div{display:box}*/
+.row{margin-right:-10px;margin-left:-10px;}
+
+.col-md-4, .col-xs-6, .col-sm-4{
+	float: left;
+    min-height:1px;  
+    position:relative;}
+
+.list-grp {
+ border:0;
+  border-radius:0;
+  box-shadow:0 0 0;
+  margin:0;}
+.list-grp {
+  margin-bottom:20px;
+  padding-left:0;
+}
+
+.list-grp a {
+  border-radius:0;
+}
+
+.list-grp-itm {
+  background-color:#FFFFFF;
+  border:1px solid #DDDDDD;
+  display:block;
+  margin-bottom:-1px;
+  padding:5px 20px;
+  position:relative;
+} 
+.list-grp-itm:first-child {
+  border-top-left-radius:4px;
+  border-top-right-radius:4px;
+}
+/*END div frontpage*/ 
+.sintax{
+  background:#EEEEEE;
+  border:1px solid #E6E6E6;
+  border-radius:5px;
+  box-shadow:#6D97B7 1px 1px 1px;
+  border-collapse:collapse;
+  border-spacing:0;
+  font-family:Consolas, 'Courier New', Courier, monospace;
+  font-size:1em;
+  margin:0 0 20px;
+  padding:5px;
+  white-space:pre-wrap;  
+  word-wrap:break-word;
+}
+.arg{
+  background:#EEEEEE;
+  border:1px solid #E6E6E6;
+  border-radius:4px;
+  box-shadow:#6D97B7 1px 1px 1px;
+  padding-right:1px;
+  padding-left:1px;
+}
+
+.crayon-syntax{border-radius:4px;box-shadow:#6D97B7 1px 1px 1px;}
+
+/*.tbfunc td{width:33%;}*/
+
+
+li.list{background:none;}
+
+.rel_1, .rel_2  {float:left;position:relative;width:45.3%;background-color:#fff;}
+/*.rel_2 {float:left;position:relative;width:45.3%;background-color:#fff;}*/
+
+.gt_ct{margin-top:10px;display:block;}
+
+#text-2{margin-left:6.6rem;display:block;} 
+
+/*.entry-content p {font-family: 'PT Serif Caption', serif;}*/
+.list-grp-itm, .menu-item, .entry-content p {font-family: 'PT Serif', serif;}
+/*google search*/
+
+input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus {
+  height:3.2rem;
+}
+
+table.gsc-search-box,
+.gsc-search-box td,
+.gsc-search-box tr,
+.gsc-input-box tr,
+.gsc-input-box td{
+border-style: none;
+box-shadow: none;
+-moz-box-shadow: none;
+-webkit-box-shadow: none;
+}</style>
+<link rel="icon" href="wp-content/uploads/2020/07/favicon.ico" sizes="32x32" />
+<link rel="icon" href="wp-content/uploads/2020/07/favicon.ico" sizes="192x192" />
+<link rel="apple-touch-icon" href="wp-content/uploads/2020/07/favicon.ico" />
+<meta name="msapplication-TileImage" content="https://oracleplsql.ru/wp-content/uploads/2020/07/favicon.ico" />
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript></head>
+
+<body class="post-template-default single single-post postid-2825 single-format-standard one-sidebar-left medium-sidebar large-font-sidebar large-font-content">
+  <amp-auto-ads type="adsense"
+              data-ad-client="ca-pub-8777261894857145">
+</amp-auto-ads>
+<div style="display:table;margin: 0 auto;">
+<!-- orclplsql_adapt_mobile_top -->
+<style type="text/css">
+.mob_top { width: 320px; height: 100px; }
+@media (min-width:500px) { .mob_top { width: 468px; height: 60px; } }
+@media (min-width:800px) { .mob_top { width: 728px; height: 90px; } }
+</style>
+<ins class="adsbygoogle mob_top"
+     style="display:inline-block;"
+	 data-full-width-responsive="true"
+     data-ad-client="ca-pub-8777261894857145"
+     data-ad-slot="8026856126" 	 
+     data-full-width-responsive="true"></ins>
+<script data-rocketlazyloadscript='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' async ></script>	 
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>	
+<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+			<h1 class="site-title"><a href="index.html" title="Oracle PL/SQL •MySQL •MariaDB •SQL Server •SQLite" rel="home">Oracle PL/SQL •MySQL •MariaDB •SQL Server •SQLite</a></h1>
+			<h2 class="site-description">Базы данных</h2>
+					</div><!-- .site-branding -->
+
+				<nav role="navigation" class="site-navigation main-navigation">
+			<h1 class="assistive-text">Menu</h1>
+			<div class="assistive-text skip-link"><a href="index.html%3Fp=2825.html#content" title="Skip to content">Skip to content</a></div>
+
+			<div class="menu-sql-container"><ul id="menu-sql" class="menu"><li id="menu-item-2533" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2533"><a href="index.html%3Fp=2402.html">SQL</a></li>
+<li id="menu-item-7341" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7341"><a href="index.html%3Fp=7337.html">Oracle PL/SQL</a></li>
+<li id="menu-item-3192" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3192"><a href="index.html%3Fp=7334.html">MySQL</a></li>
+<li id="menu-item-7342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7342"><a href="index.html%3Fp=7347.html">SQL Server</a></li>
+<li id="menu-item-7343" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7343"><a href="index.html%3Fp=7351.html">SQLite</a></li>
+<li id="menu-item-6422" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6422"><a href="index.html%3Fp=7344.html">PostgreSQL</a></li>
+<li id="menu-item-7201" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7201"><a href="index.html%3Fp=7330.html">MariaDB</a></li>
+</ul></div>		</nav><!-- .site-navigation .main-navigation -->
+			
+		
+	</header><!-- #masthead .site-header -->
+
+	<div id="main" class="site-main">
+		<div id="primary" class="content-area">
+			<div id="content" class="site-content" role="main">
+
+			
+				
+<article id="post-2825" class="post-2825 post type-post status-publish format-standard hentry category-numeric-mathematical-functions-mysql">
+	<header class="entry-header">
+		<h1 class="entry-title">MySQL функция LOG</h1>
+		<div class="entry-meta">
+		<!--	-->
+		</div><!-- .entry-meta -->		
+	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+				<p>В этом учебном пособии вы узнаете, как использовать MySQL <strong>функцию LOG</strong> с синтаксисом и примерами.<br />
+<span id="more-2825"></span></p>
+<h2>Описание</h2>
+<p>MySQL функция <strong>LOG</strong> возвращает либо натуральный логарифм числа, если вызывается с одним параметром, либо логарифм числа по основанию, если вызывается с двумя параметрами.</p>
+<h2>Синтаксис</h2>
+<p>Синтаксис MySQL функции LOG:</p>
+<div class="sintax">LOG( number )
+</div>
+<p>ИЛИ	</p>
+<div class="sintax">
+LOG( base, number )
+</div>
+<h3>Параметры или аргументы </h3>
+<p><span class="arg">number</span> - число, для которого берется натуральный логарифм. Должно быть больше 0.</p>
+<p><span class="arg">base</span> - Основание, на которое рассчитывается натуральный логарифм. Должно быть больше 1.</p>
+<h2>Примечание</h2>
+<ul>
+<li>Функция LOG возвращает NULL, если <span class="arg">number</span> меньше или равно 0.</li>
+<li>Функция LOG возвращает NULL, если <span class="arg">base</span> меньше или равна 1.</li>
+<li>См. также функции <a href="index.html%3Fp=2823.html">LN</a> и <a href="index.html%3Fp=2812.html">EXP</a>.</li>
+</ul>
+<h2>Применение</h2>
+<p>Функция LOG может использоваться в следующих версиях MySQL:</p>
+<ul>
+<li>MySQL 5.7, MySQL 5.6, MySQL 5.5, MySQL 5.1, MySQL 5.0, MySQL 4.1, MySQL 4.0, MySQL 3.23</li>
+</ul>
+<h2>Пример</h2>
+<p>Рассмотрим примеры MySQL функции LOG, чтобы понять, как использовать функцию LOG в MySQL.<br />
+Например:</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f82dc9d46a6336159570" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">MySQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+mysql&gt; SELECT LOG(1);
+
+#Результат:  0 
+
+mysql&gt; SELECT LOG(2);
+
+#Результат:  0.6931471805599453 
+
+mysql&gt; SELECT LOG(2.5);
+
+#Результат:  0.9162907318741551 
+
+mysql&gt; SELECT LOG(0);
+
+#Результат:  NULL</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f82dc9d46a6336159570-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f82dc9d46a6336159570-2">2</div><div class="crayon-num" data-line="crayon-63f82dc9d46a6336159570-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f82dc9d46a6336159570-4">4</div><div class="crayon-num" data-line="crayon-63f82dc9d46a6336159570-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f82dc9d46a6336159570-6">6</div><div class="crayon-num" data-line="crayon-63f82dc9d46a6336159570-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f82dc9d46a6336159570-8">8</div><div class="crayon-num" data-line="crayon-63f82dc9d46a6336159570-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f82dc9d46a6336159570-10">10</div><div class="crayon-num" data-line="crayon-63f82dc9d46a6336159570-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f82dc9d46a6336159570-12">12</div><div class="crayon-num" data-line="crayon-63f82dc9d46a6336159570-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f82dc9d46a6336159570-14">14</div><div class="crayon-num" data-line="crayon-63f82dc9d46a6336159570-15">15</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f82dc9d46a6336159570-1">mysql<span class="crayon-h">&gt;</span><span class="crayon-h"> </span><span class="crayon-st">SELECT</span><span class="crayon-h"> </span><span class="crayon-e ">LOG</span>(1);</div><div class="crayon-line crayon-striped-line" id="crayon-63f82dc9d46a6336159570-2">&nbsp;</div><div class="crayon-line" id="crayon-63f82dc9d46a6336159570-3"><span class="crayon-c">#Результат:&nbsp;&nbsp;0 </span></div><div class="crayon-line crayon-striped-line" id="crayon-63f82dc9d46a6336159570-4">&nbsp;</div><div class="crayon-line" id="crayon-63f82dc9d46a6336159570-5">mysql<span class="crayon-h">&gt;</span><span class="crayon-h"> </span><span class="crayon-st">SELECT</span><span class="crayon-h"> </span><span class="crayon-e ">LOG</span>(2);</div><div class="crayon-line crayon-striped-line" id="crayon-63f82dc9d46a6336159570-6">&nbsp;</div><div class="crayon-line" id="crayon-63f82dc9d46a6336159570-7"><span class="crayon-c">#Результат:&nbsp;&nbsp;0.6931471805599453 </span></div><div class="crayon-line crayon-striped-line" id="crayon-63f82dc9d46a6336159570-8">&nbsp;</div><div class="crayon-line" id="crayon-63f82dc9d46a6336159570-9">mysql<span class="crayon-h">&gt;</span><span class="crayon-h"> </span><span class="crayon-st">SELECT</span><span class="crayon-h"> </span><span class="crayon-e ">LOG</span>(2.5);</div><div class="crayon-line crayon-striped-line" id="crayon-63f82dc9d46a6336159570-10">&nbsp;</div><div class="crayon-line" id="crayon-63f82dc9d46a6336159570-11"><span class="crayon-c">#Результат:&nbsp;&nbsp;0.9162907318741551 </span></div><div class="crayon-line crayon-striped-line" id="crayon-63f82dc9d46a6336159570-12">&nbsp;</div><div class="crayon-line" id="crayon-63f82dc9d46a6336159570-13">mysql<span class="crayon-h">&gt;</span><span class="crayon-h"> </span><span class="crayon-st">SELECT</span><span class="crayon-h"> </span><span class="crayon-e ">LOG</span>(0);</div><div class="crayon-line crayon-striped-line" id="crayon-63f82dc9d46a6336159570-14">&nbsp;</div><div class="crayon-line" id="crayon-63f82dc9d46a6336159570-15"><span class="crayon-c">#Результат:&nbsp;&nbsp;NULL</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0022 seconds] -->
+<p></p>
+<p>Теперь рассмотрим некоторые примеры функции LOG, с двумя параметрами:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f82dc9d46ac483509418" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">MySQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+mysql&gt; SELECT LOG(2, 1);
+
+#Результат:  0 
+
+mysql&gt; SELECT LOG(3, 4);
+
+#Результат:  1.2618595071429148 
+
+mysql&gt; SELECT LOG(2, 0);
+
+#Результат:  NULL 
+
+mysql&gt; SELECT LOG(1, 4);
+
+#Результат:  NULL</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f82dc9d46ac483509418-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f82dc9d46ac483509418-2">2</div><div class="crayon-num" data-line="crayon-63f82dc9d46ac483509418-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f82dc9d46ac483509418-4">4</div><div class="crayon-num" data-line="crayon-63f82dc9d46ac483509418-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f82dc9d46ac483509418-6">6</div><div class="crayon-num" data-line="crayon-63f82dc9d46ac483509418-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f82dc9d46ac483509418-8">8</div><div class="crayon-num" data-line="crayon-63f82dc9d46ac483509418-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f82dc9d46ac483509418-10">10</div><div class="crayon-num" data-line="crayon-63f82dc9d46ac483509418-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f82dc9d46ac483509418-12">12</div><div class="crayon-num" data-line="crayon-63f82dc9d46ac483509418-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f82dc9d46ac483509418-14">14</div><div class="crayon-num" data-line="crayon-63f82dc9d46ac483509418-15">15</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f82dc9d46ac483509418-1">mysql<span class="crayon-h">&gt;</span><span class="crayon-h"> </span><span class="crayon-st">SELECT</span><span class="crayon-h"> </span><span class="crayon-e ">LOG</span>(2,<span class="crayon-h"> </span>1);</div><div class="crayon-line crayon-striped-line" id="crayon-63f82dc9d46ac483509418-2">&nbsp;</div><div class="crayon-line" id="crayon-63f82dc9d46ac483509418-3"><span class="crayon-c">#Результат:&nbsp;&nbsp;0 </span></div><div class="crayon-line crayon-striped-line" id="crayon-63f82dc9d46ac483509418-4">&nbsp;</div><div class="crayon-line" id="crayon-63f82dc9d46ac483509418-5">mysql<span class="crayon-h">&gt;</span><span class="crayon-h"> </span><span class="crayon-st">SELECT</span><span class="crayon-h"> </span><span class="crayon-e ">LOG</span>(3,<span class="crayon-h"> </span>4);</div><div class="crayon-line crayon-striped-line" id="crayon-63f82dc9d46ac483509418-6">&nbsp;</div><div class="crayon-line" id="crayon-63f82dc9d46ac483509418-7"><span class="crayon-c">#Результат:&nbsp;&nbsp;1.2618595071429148 </span></div><div class="crayon-line crayon-striped-line" id="crayon-63f82dc9d46ac483509418-8">&nbsp;</div><div class="crayon-line" id="crayon-63f82dc9d46ac483509418-9">mysql<span class="crayon-h">&gt;</span><span class="crayon-h"> </span><span class="crayon-st">SELECT</span><span class="crayon-h"> </span><span class="crayon-e ">LOG</span>(2,<span class="crayon-h"> </span>0);</div><div class="crayon-line crayon-striped-line" id="crayon-63f82dc9d46ac483509418-10">&nbsp;</div><div class="crayon-line" id="crayon-63f82dc9d46ac483509418-11"><span class="crayon-c">#Результат:&nbsp;&nbsp;NULL </span></div><div class="crayon-line crayon-striped-line" id="crayon-63f82dc9d46ac483509418-12">&nbsp;</div><div class="crayon-line" id="crayon-63f82dc9d46ac483509418-13">mysql<span class="crayon-h">&gt;</span><span class="crayon-h"> </span><span class="crayon-st">SELECT</span><span class="crayon-h"> </span><span class="crayon-e ">LOG</span>(1,<span class="crayon-h"> </span>4);</div><div class="crayon-line crayon-striped-line" id="crayon-63f82dc9d46ac483509418-14">&nbsp;</div><div class="crayon-line" id="crayon-63f82dc9d46ac483509418-15"><span class="crayon-c">#Результат:&nbsp;&nbsp;NULL</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+								<span class="cat-links">
+				Рубрика:&nbsp;<a href="category/numeric-mathematical-functions-mysql.html" rel="category tag">Числовые / математические функции MySQL</a>			</span>
+			
+					
+				<span class="sep"> | </span>
+		<span class="permalink"><a href="index.html%3Fp=2825.html" rel="bookmark" title="Прямая ссылка на MySQL функция LOG">Permalink</a></span>
+			</footer><!-- .entry-meta -->
+<div class="gt_ct">
+<script data-rocketlazyloadscript='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' async ></script>
+<!-- Oracleplsql.ru (низ статья) 728 x 90 -->
+<style>
+.orclplsql_adapt_mobile_bottom { width: 320px; height: 100px; }
+@media(min-width: 500px) { .orclplsql_adapt_mobile_bottom { width: 468px; height: 60px; } }
+@media(min-width: 800px) { .orclplsql_adapt_mobile_bottom { width: 728px; height: 90px; } }
+</style> 
+<ins class="adsbygoogle orclplsql_adapt_mobile_bottom"
+     style="display:block"
+     data-ad-client="ca-pub-8777261894857145"
+     data-ad-slot="6588458128"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>	
+</div>
+<!--<input type="button" onclick="history.back();" value="Назад"/>-->
+<script data-rocketlazyloadscript='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' async ></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="autorelaxed"
+     data-ad-client="ca-pub-8777261894857145"
+     data-ad-slot="6043257265"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</article><!-- #post-2825 -->
+
+
+				
+					<nav role="navigation" id="nav-below" class="site-navigation post-navigation">
+		<h1 class="assistive-text">Post navigation</h1>
+
+	
+		<div class="nav-previous"><a href="index.html%3Fp=2823.html" rel="prev"><span class="meta-nav">&laquo;</span> MySQL функция LN</a></div>		<div class="nav-next"><a href="index.html%3Fp=2828.html" rel="next">MySQL функция LOG10 <span class="meta-nav">&raquo;</span></a></div>
+	
+	</nav><!-- #nav-below -->
+	
+
+			
+			</div><!-- #content .site-content -->
+		</div><!-- #primary .content-area -->
+
+	<div id="secondary" class="widget-area">
+					<div id="sidebar-1" class="sidebar" role="complementary">
+								<aside id="custom_html-5" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><script async src='https://cse.google.com/cse.js?cx=partner-pub-8777261894857145:5121821727'></script>
+<div class="gcse-searchbox-only"></div></div></aside><aside id="nav_menu-10" class="widget widget_nav_menu"><h1 class="widget-title">MySQL</h1><div class="menu-mysql-container"><ul id="menu-mysql" class="menu"><li id="menu-item-7563" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7563"><a href="index.html%3Fp=7334.html">MySQL Full</a></li>
+<li id="menu-item-7560" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7560"><a href="index.html%3Fp=7555.html">Администрирование БД</a></li>
+<li id="menu-item-7562" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7562"><a href="index.html%3Fp=3197.html">Процедуры</a></li>
+<li id="menu-item-7564" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7564"><a href="index.html%3Fp=3195.html">Функции</a></li>
+<li id="menu-item-7603" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7603"><a href="index.html%3Fp=3564.html">Индексы</a></li>
+<li id="menu-item-7568" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7568"><a href="index.html%3Fp=7565.html">Курсоры</a></li>
+<li id="menu-item-7569" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7569"><a href="index.html%3Fp=3598.html">Операторы сравнения (=, >=, !=)</a></li>
+<li id="menu-item-7605" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7605"><a href="index.html%3Fp=3558.html">Первичные ключи</a></li>
+<li id="menu-item-7573" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7573"><a href="index.html%3Fp=7570.html">Таблицы и представления</a></li>
+<li id="menu-item-7574" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7574"><a href="index.html%3Fp=3606.html">Типы данных</a></li>
+<li id="menu-item-7578" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7578"><a href="index.html%3Fp=7575.html">Типы SQL запросов</a></li>
+<li id="menu-item-7582" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7582"><a href="index.html%3Fp=7579.html">Триггеры</a></li>
+<li id="menu-item-7585" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7585"><a href="index.html%3Fp=7583.html">Циклы и Условные операторы</a></li>
+<li id="menu-item-7604" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7604"><a href="index.html%3Fp=3562.html">Уникальные ограничения</a></li>
+<li id="menu-item-7591" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7591"><a href="index.html%3Fp=7587.html">Условия (and, or, not)</a></li>
+</ul></div></aside><aside id="nav_menu-11" class="widget widget_nav_menu"><h1 class="widget-title">Функции MySQL</h1><div class="menu-funkczii-mysql-container"><ul id="menu-funkczii-mysql" class="menu"><li id="menu-item-7499" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7499"><a href="index.html%3Fp=7370.html">Дата / время</a></li>
+<li id="menu-item-7500" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7500"><a href="index.html%3Fp=7388.html">Дополнительные</a></li>
+<li id="menu-item-7501" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7501"><a href="index.html%3Fp=7414.html">Символьные / строчные</a></li>
+<li id="menu-item-7502" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7502"><a href="index.html%3Fp=7443.html">Числовые / математические</a></li>
+<li id="menu-item-7503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7503"><a href="index.html%3Fp=7461.html">Шифрования</a></li>
+</ul></div></aside><aside id="custom_html-6" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><script data-rocketlazyloadscript='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' async ></script>
+<!-- Oracleplsql.ru боковой 300х600 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8777261894857145"
+     data-ad-slot="1425058522"
+     data-ad-format="auto"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!-- hit.ua -->
+<a href='http://hit.ua/?x=128731' target='_blank' rel="noopener">
+<script language="javascript" type="text/javascript"><!--
+Cd=document;Cr="&"+Math.random();Cp="&s=1";
+Cd.cookie="b=b";if(Cd.cookie)Cp+="&c=1";
+Cp+="&t="+(new Date()).getTimezoneOffset();
+if(self!=top)Cp+="&f=1";
+//--></script>
+<script language="javascript1.1" type="text/javascript"><!--
+if(navigator.javaEnabled())Cp+="&j=1";
+//--></script>
+<script language="javascript1.2" type="text/javascript"><!--
+if(typeof(screen)!='undefined')Cp+="&w="+screen.width+"&h="+
+screen.height+"&d="+(screen.colorDepth?screen.colorDepth:screen.pixelDepth);
+//--></script>
+<script language="javascript" type="text/javascript"><!--
+Cd.write("<sc"+"ript src='//c.hit.ua/hit?i=128731&g=0&x=3"+Cp+Cr+
+"&r="+escape(Cd.referrer)+"&u="+escape(window.location.href)+"'></sc"+"ript>");
+//--></script></a>
+<!-- / hit.ua -->
+
+<!-- Yandex.Metrika counter -->
+
+<noscript><div><img src="https://mc.yandex.ru/watch/26721072" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</div></aside>			</div><!-- #sidebar-right -->
+		
+			</div>
+
+	</div><!-- #main .site-main -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+			<div>&copy; 2014-2022 Oracle PL/SQL</div>		</div>
+			</footer><!-- #colophon .site-footer -->
+</div><!-- #page .hfeed .site -->
+
+<script type='text/javascript' id='rocket-browser-checker-js-after'>
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type='text/javascript' id='rocket-delay-js-js-after'>
+(function() {
+"use strict";var e=function(){function n(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(e,t,r){return t&&n(e.prototype,t),r&&n(e,r),e}}();function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function r(e,t){n(this,r),this.attrName="data-rocketlazyloadscript",this.browser=t,this.options=this.browser.options,this.triggerEvents=e,this.userEventListener=this.triggerListener.bind(this)}return e(r,[{key:"init",value:function(){this._addEventListener(this)}},{key:"reset",value:function(){this._removeEventListener(this)}},{key:"_addEventListener",value:function(t){this.triggerEvents.forEach(function(e){return window.addEventListener(e,t.userEventListener,t.options)})}},{key:"_removeEventListener",value:function(t){this.triggerEvents.forEach(function(e){return window.removeEventListener(e,t.userEventListener,t.options)})}},{key:"_loadScriptSrc",value:function(){var r=this,e=document.querySelectorAll("script["+this.attrName+"]");0!==e.length&&Array.prototype.slice.call(e).forEach(function(e){var t=e.getAttribute(r.attrName);e.setAttribute("src",t),e.removeAttribute(r.attrName)}),this.reset()}},{key:"triggerListener",value:function(){this._loadScriptSrc(),this._removeEventListener(this)}}],[{key:"run",value:function(){RocketBrowserCompatibilityChecker&&new r(["keydown","mouseover","touchmove","touchstart"],new RocketBrowserCompatibilityChecker({passive:!0})).init()}}]),r}();t.run();
+}());
+</script>
+
+
+<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"></script>
+<script src="wp-content/cache/min/1/5da3b72814b1a36896cd845e11329e29.js" data-minify="1" defer></script></body>
+</html>
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1677209033 -->
