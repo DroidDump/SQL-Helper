@@ -1,0 +1,6 @@
+User-agent: *
+ Disallow: /wp-admin/
+ Disallow: /wp-includes/
+ Disallow: /wp-json/* 
+ 
+ Sitemap: https://oracleplsql.ru/sitemap.xml
