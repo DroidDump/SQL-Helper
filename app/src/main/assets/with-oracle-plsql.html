@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script data-rocketlazyloadscript='https://www.googletagmanager.com/gtag/js?id=UA-139248612-1' async ></script>
+<script data-rocketlazyloadscript='data:text/javascript;base64,CiAgd2luZG93LmRhdGFMYXllciA9IHdpbmRvdy5kYXRhTGF5ZXIgfHwgW107CiAgZnVuY3Rpb24gZ3RhZygpe2RhdGFMYXllci5wdXNoKGFyZ3VtZW50cyk7fQogIGd0YWcoJ2pzJywgbmV3IERhdGUoKSk7CgogIGd0YWcoJ2NvbmZpZycsICdVQS0xMzkyNDg2MTItMScpOwo=' ></script>	
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width" />
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="https://oracleplsql.ru/xmlrpc.php" />
+<!--[if lt IE 9]>
+<script src="https://oracleplsql.ru/wp-content/themes/f2/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+
+<script data-rocketlazyloadscript='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' async ></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8777261894857145",
+          enable_page_level_ads: true
+     });
+</script>
+
+<title>Oracle PL/SQL оператор WITH &#8212; Oracle PL/SQL •MySQL •MariaDB •SQL Server •SQLite</title><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT%20Serif%7CPrata%7CBitter%3A700%7CGudea%3A400%2C700%2C400italic&#038;display=swap" /><link rel="stylesheet" href="wp-content/cache/min/1/fa8990c4217289171489528cd3f70146.css" media="all" data-minify="1" />
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='https://fonts.googleapis.com/' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="Oracle PL/SQL •MySQL •MariaDB •SQL Server •SQLite &raquo; Лента" href="feed.html" />
+<link rel="alternate" type="application/rss+xml" title="Oracle PL/SQL •MySQL •MariaDB •SQL Server •SQLite &raquo; Лента комментариев" href="comments/feed.html" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	
+
+
+
+
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('index.html%3Fp=8192.html');--wp--preset--duotone--grayscale: url('index.html%3Fp=8192.html');--wp--preset--duotone--purple-yellow: url('index.html%3Fp=8192.html');--wp--preset--duotone--blue-red: url('index.html%3Fp=8192.html');--wp--preset--duotone--midnight: url('index.html%3Fp=8192.html');--wp--preset--duotone--magenta-yellow: url('index.html%3Fp=8192.html');--wp--preset--duotone--purple-green: url('index.html%3Fp=8192.html');--wp--preset--duotone--blue-orange: url('index.html%3Fp=8192.html');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;}:where(.is-layout-flex){gap: 0.5em;}body .is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}body .is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}body .is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}body .is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}body .is-layout-flex{flex-wrap: wrap;align-items: center;}body .is-layout-flex > *{margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+.wp-block-navigation a:where(:not(.wp-element-button)){color: inherit;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}
+.wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
+</style>
+
+
+<link rel='stylesheet' id='print-css' href='wp-content/themes/f2/print.css%3Fver=2.2.3.css' type='text/css' media='print' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='ie-style-css' href='https://oracleplsql.ru/wp-content/themes/f2/ie.css?ver=2.2.3' type='text/css' media='screen, projection' />
+<![endif]-->
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='ie7-style-css' href='https://oracleplsql.ru/wp-content/themes/f2/ie7.css?ver=2.2.3' type='text/css' media='screen, projection' />
+<![endif]-->
+<script type='text/javascript' src='https://oracleplsql.ru/wp-includes/js/jquery/jquery.min.js?ver=3.6.1' id='jquery-core-js' defer></script>
+
+
+
+<link rel="https://api.w.org/" href="wp-json/index.html" /><link rel="alternate" type="application/json" href="wp-json/wp/v2/posts/8192" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc.php%3Frsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://oracleplsql.ru/wp-includes/wlwmanifest.xml" />
+<meta name="generator" content="WordPress 6.1.1" />
+<link rel="canonical" href="index.html%3Fp=8192.html" />
+<link rel='shortlink' href='index.html%3Fp=8192.html' />
+<!-- Customized F2 styles -->
+<style type="text/css">
+/*div frontpage*/ 
+
+/*div{display:box}*/
+.row{margin-right:-10px;margin-left:-10px;}
+
+.col-md-4, .col-xs-6, .col-sm-4{
+	float: left;
+    min-height:1px;  
+    position:relative;}
+
+.list-grp {
+ border:0;
+  border-radius:0;
+  box-shadow:0 0 0;
+  margin:0;}
+.list-grp {
+  margin-bottom:20px;
+  padding-left:0;
+}
+
+.list-grp a {
+  border-radius:0;
+}
+
+.list-grp-itm {
+  background-color:#FFFFFF;
+  border:1px solid #DDDDDD;
+  display:block;
+  margin-bottom:-1px;
+  padding:5px 20px;
+  position:relative;
+} 
+.list-grp-itm:first-child {
+  border-top-left-radius:4px;
+  border-top-right-radius:4px;
+}
+/*END div frontpage*/ 
+.sintax{
+  background:#EEEEEE;
+  border:1px solid #E6E6E6;
+  border-radius:5px;
+  box-shadow:#6D97B7 1px 1px 1px;
+  border-collapse:collapse;
+  border-spacing:0;
+  font-family:Consolas, 'Courier New', Courier, monospace;
+  font-size:1em;
+  margin:0 0 20px;
+  padding:5px;
+  white-space:pre-wrap;  
+  word-wrap:break-word;
+}
+.arg{
+  background:#EEEEEE;
+  border:1px solid #E6E6E6;
+  border-radius:4px;
+  box-shadow:#6D97B7 1px 1px 1px;
+  padding-right:1px;
+  padding-left:1px;
+}
+
+.crayon-syntax{border-radius:4px;box-shadow:#6D97B7 1px 1px 1px;}
+
+/*.tbfunc td{width:33%;}*/
+
+
+li.list{background:none;}
+
+.rel_1, .rel_2  {float:left;position:relative;width:45.3%;background-color:#fff;}
+/*.rel_2 {float:left;position:relative;width:45.3%;background-color:#fff;}*/
+
+.gt_ct{margin-top:10px;display:block;}
+
+#text-2{margin-left:6.6rem;display:block;} 
+
+/*.entry-content p {font-family: 'PT Serif Caption', serif;}*/
+.list-grp-itm, .menu-item, .entry-content p {font-family: 'PT Serif', serif;}
+/*google search*/
+
+input.gsc-input, .gsc-input-box, .gsc-input-box-hover, .gsc-input-box-focus {
+  height:3.2rem;
+}
+
+table.gsc-search-box,
+.gsc-search-box td,
+.gsc-search-box tr,
+.gsc-input-box tr,
+.gsc-input-box td{
+border-style: none;
+box-shadow: none;
+-moz-box-shadow: none;
+-webkit-box-shadow: none;
+}</style>
+<link rel="icon" href="wp-content/uploads/2020/07/favicon.ico" sizes="32x32" />
+<link rel="icon" href="wp-content/uploads/2020/07/favicon.ico" sizes="192x192" />
+<link rel="apple-touch-icon" href="wp-content/uploads/2020/07/favicon.ico" />
+<meta name="msapplication-TileImage" content="https://oracleplsql.ru/wp-content/uploads/2020/07/favicon.ico" />
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript></head>
+
+<body class="post-template-default single single-post postid-8192 single-format-standard one-sidebar-left medium-sidebar large-font-sidebar large-font-content">
+  <amp-auto-ads type="adsense"
+              data-ad-client="ca-pub-8777261894857145">
+</amp-auto-ads>
+<div style="display:table;margin: 0 auto;">
+<!-- orclplsql_adapt_mobile_top -->
+<style type="text/css">
+.mob_top { width: 320px; height: 100px; }
+@media (min-width:500px) { .mob_top { width: 468px; height: 60px; } }
+@media (min-width:800px) { .mob_top { width: 728px; height: 90px; } }
+</style>
+<ins class="adsbygoogle mob_top"
+     style="display:inline-block;"
+	 data-full-width-responsive="true"
+     data-ad-client="ca-pub-8777261894857145"
+     data-ad-slot="8026856126" 	 
+     data-full-width-responsive="true"></ins>
+<script data-rocketlazyloadscript='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' async ></script>	 
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>	
+<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+			<h1 class="site-title"><a href="index.html" title="Oracle PL/SQL •MySQL •MariaDB •SQL Server •SQLite" rel="home">Oracle PL/SQL •MySQL •MariaDB •SQL Server •SQLite</a></h1>
+			<h2 class="site-description">Базы данных</h2>
+					</div><!-- .site-branding -->
+
+				<nav role="navigation" class="site-navigation main-navigation">
+			<h1 class="assistive-text">Menu</h1>
+			<div class="assistive-text skip-link"><a href="index.html%3Fp=8192.html#content" title="Skip to content">Skip to content</a></div>
+
+			<div class="menu-sql-container"><ul id="menu-sql" class="menu"><li id="menu-item-2533" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2533"><a href="index.html%3Fp=2402.html">SQL</a></li>
+<li id="menu-item-7341" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7341"><a href="index.html%3Fp=7337.html">Oracle PL/SQL</a></li>
+<li id="menu-item-3192" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3192"><a href="index.html%3Fp=7334.html">MySQL</a></li>
+<li id="menu-item-7342" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7342"><a href="index.html%3Fp=7347.html">SQL Server</a></li>
+<li id="menu-item-7343" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7343"><a href="index.html%3Fp=7351.html">SQLite</a></li>
+<li id="menu-item-6422" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6422"><a href="index.html%3Fp=7344.html">PostgreSQL</a></li>
+<li id="menu-item-7201" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7201"><a href="index.html%3Fp=7330.html">MariaDB</a></li>
+</ul></div>		</nav><!-- .site-navigation .main-navigation -->
+			
+		
+	</header><!-- #masthead .site-header -->
+
+	<div id="main" class="site-main">
+		<div id="primary" class="content-area">
+			<div id="content" class="site-content" role="main">
+
+			
+				
+<article id="post-8192" class="post-8192 post type-post status-publish format-standard hentry category-oracle-programming">
+	<header class="entry-header">
+		<h1 class="entry-title">Oracle PL/SQL оператор WITH</h1>
+		<div class="entry-meta">
+		<!--	-->
+		</div><!-- .entry-meta -->		
+	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+				<p>В этом учебном пособии вы узнаете, как использовать <strong>оператор WITH</strong> в Oracle PL/SQL с синтаксисом и примерами.<br />
+<span id="more-8192"></span></p>
+<h2>Описание</h2>
+<p>Oracle PL/SQL оператор WITH позволяет дать блоку подзапроса имя/псевдоним, на которое можно ссылаться в нескольких местах основного SQL-запроса. Имя, присвоенное подзапросу, обрабатывается так, как если бы оно было встроенным представлением или таблицей. SQL оператор WITH по сути является заменой обычному подзапросу.</p>
+<h2>Синтаксис</h2>
+<p>Cинтаксис Oracle PL/SQL WITH с одним подзапросом:</p>
+<div class="sintax">WITH query_name AS (SELECT expressions FROM table_A)<br />
+ SELECT column_list<br />
+   FROM query_name [,table_name]<br />
+[WHERE conditions]</div>
+<p>или</p>
+<p>Cинтаксис Oracle PL/SQL WITH с с несколькими подзапросами:</p>
+<div class="sintax">WITH query_name_A AS<br />
+	 (SELECT expressions FROM table_A),<br />
+     query_name_B AS<br />
+	 ([SELECT expressions FROM query_name_A] | [SELECT expressions FROM table_B])<br />
+SELECT column_list<br />
+  FROM query_name_A, query_name_B [,table_X | Join table_Z]<br />
+[WHERE conditions]</div>
+<p><span class="arg">expressions</span> - поля или расчеты подзапроса.<br />
+<span class="arg">column_list</span> - поля или расчеты основного запроса.<br />
+<span class="arg">table_A</span>, <span class="arg">table_B</span>, <span class="arg">table_X</span>, <span class="arg">table_Z</span> - таблицы или соединения для подзапросов.<br />
+<span class="arg">query_name_A</span>, <span class="arg">query_name_B</span>  - псевдоним подзапроса. Если подзапросов несколько, то они перечисляются через запятую.<br />
+<span class="arg">WHERE conditions</span> - условия которые должны быть выполнены для основных запросов.</p>
+<h2>Примечание</h2>
+<ul>
+<li>Формально предложение WITH называется факторингом подзапроса.</li>
+<li>Предложение SQL WITH используется, когда подзапрос выполняется несколько раз.</li>
+<li>Подзапросы в WITH перечисляются через запятую.</li>
+</ul>
+<h2>Применение</h2>
+<ul>
+<li>SQL-предложение WITH было введено Oracle в базе данных Oracle 9i выпуск 2.</li>
+<li>Начиная с Oracle Database 12c Release 1 (12.1) в операторе WITH можно определять функции и процедуры.</li>
+</ul>
+<h2>Примеры Oracle PL/SQL оператор WITH</h2>
+<ul>
+<li><a href="index.html%3Fp=8192.html#one_subq">Пример WITH с одним подзапросом</a></li>
+<li><a href="index.html%3Fp=8192.html#more_subq">Пример WITH с двумя подзапросами</a></li>
+<li><a href="index.html%3Fp=8192.html#func_subq">Пример WITH с функцией</a></li>
+<li><a href="index.html%3Fp=8192.html#proc_subq">Пример WITH с процедурой</a></li>
+<li><a href="index.html%3Fp=8192.html#pragma">Пример PRAGMA UDF</a></li>
+</ul>
+<p>Для примера использования оператор WITH, с одним и двумя подзапросами, создадим несколько таблиц с данными.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f8298c33c0d248632294" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Oracle PL/SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+--удалим таблицы из базы данных, если существуют
+-- DROP TABLE EMP PURGE;
+-- DROP TABLE DEPT PURGE;
+
+--Создадим две таблицы EMP и DEPT:
+CREATE TABLE DEPT (
+  DEPTNO NUMBER(2) CONSTRAINT PK_DEPT PRIMARY KEY,
+  DNAME VARCHAR2(14),
+  CITY VARCHAR2(15)
+) ;
+
+CREATE TABLE EMP (
+  EMPNO NUMBER(4) CONSTRAINT PK_EMP PRIMARY KEY,
+  ENAME VARCHAR2(10),
+  JOB VARCHAR2(9),
+  MGR NUMBER(4),
+  HIREDATE DATE,
+  SAL NUMBER(7,2),
+  COMM NUMBER(7,2),
+  DEPTNO NUMBER(2) CONSTRAINT FK_DEPTNO REFERENCES DEPT
+);
+
+--И добавим в таблицы EMP и DEPT следующие данные:
+--DEPT
+	INSERT INTO DEPT VALUES (10,'ACCOUNTING','NEW YORK');
+	INSERT INTO DEPT VALUES (20,'RESEARCH','DALLAS');
+	INSERT INTO DEPT VALUES (30,'SALES','CHICAGO');
+	INSERT INTO DEPT VALUES (40,'OPERATIONS','BOSTON');
+--EMP
+	INSERT INTO EMP VALUES (7369,'SMITH','CLERK',7902,to_date('17.12.1980','dd.mm.yyyy'),800,NULL,20);
+	INSERT INTO EMP VALUES (7499,'ALLEN','SALESMAN',7698,to_date('20.2.1981','dd.mm.yyyy'),1600,300,30);
+	INSERT INTO EMP VALUES (7521,'WARD','SALESMAN',7698,to_date('22.2.1981','dd.mm.yyyy'),1250,500,30);
+	INSERT INTO EMP VALUES (7566,'JONES','MANAGER',7839,to_date('2.4.1981','dd.mm.yyyy'),2975,NULL,20);
+	INSERT INTO EMP VALUES (7654,'MARTIN','SALESMAN',7698,to_date('28.9.1981','dd.mm.yyyy'),1250,1400,30);
+	INSERT INTO EMP VALUES (7698,'BLAKE','MANAGER',7839,to_date('1.5.1981','dd.mm.yyyy'),2850,NULL,30);
+	INSERT INTO EMP VALUES (7782,'CLARK','MANAGER',7839,to_date('9.6.1981','dd.mm.yyyy'),2450,NULL,10);
+	INSERT INTO EMP VALUES (7788,'SCOTT','ANALYST',7566,to_date('13.7.87','dd.mm.rr').85,3000,NULL,20);
+	INSERT INTO EMP VALUES (7839,'KING','PRESIDENT',NULL,to_date('17.11.1981','dd.mm.yyyy'),5000,NULL,10);
+	INSERT INTO EMP VALUES (7844,'TURNER','SALESMAN',7698,to_date('8.9.1981','dd.mm.yyyy'),1500,0,30);
+	INSERT INTO EMP VALUES (7876,'ADAMS','CLERK',7788,to_date('13.7.87', 'dd.mm.rr').51,1100,NULL,20);
+	INSERT INTO EMP VALUES (7900,'JAMES','CLERK',7698,to_date('3.12.1981','dd.mm.yyyy'),950,NULL,30);
+	INSERT INTO EMP VALUES (7902,'FORD','ANALYST',7566,to_date('3.12.1981','dd.mm.yyyy'),3000,NULL,20);
+	INSERT INTO EMP VALUES (7934,'MILLER','CLERK',7782,to_date('23.1.1982','dd.mm.yyyy'),1300,NULL,10);
+COMMIT;</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-2">2</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-4">4</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-6">6</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-8">8</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-10">10</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-12">12</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-14">14</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-16">16</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-18">18</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-20">20</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-22">22</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-24">24</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-26">26</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-28">28</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-30">30</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-32">32</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-34">34</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-36">36</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-37">37</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-38">38</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-39">39</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-40">40</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-41">41</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-42">42</div><div class="crayon-num" data-line="crayon-63f8298c33c0d248632294-43">43</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c0d248632294-44">44</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f8298c33c0d248632294-1"><span class="crayon-c">--удалим таблицы из базы данных, если существуют</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-2"><span class="crayon-c">-- DROP TABLE EMP PURGE;</span></div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-3"><span class="crayon-c">-- DROP TABLE DEPT PURGE;</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-4">&nbsp;</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-5"><span class="crayon-c">--Создадим две таблицы EMP и DEPT:</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-6"><span class="crayon-r">CREATE</span><span class="crayon-h"> </span><span class="crayon-r">TABLE</span><span class="crayon-h"> </span>DEPT<span class="crayon-h"> </span>(</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-7"><span class="crayon-h">&nbsp;&nbsp;</span>DEPTNO<span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>(2)<span class="crayon-h"> </span><span class="crayon-r">CONSTRAINT</span><span class="crayon-h"> </span>PK_DEPT<span class="crayon-h"> </span><span class="crayon-r">PRIMARY</span><span class="crayon-h"> </span><span class="crayon-r">KEY</span>,</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-8"><span class="crayon-h">&nbsp;&nbsp;</span>DNAME<span class="crayon-h"> </span><span class="crayon-r">VARCHAR2</span>(14),</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-9"><span class="crayon-h">&nbsp;&nbsp;</span>CITY<span class="crayon-h"> </span><span class="crayon-r">VARCHAR2</span>(15)</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-10">)<span class="crayon-h"> </span>;</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-11">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-12"><span class="crayon-r">CREATE</span><span class="crayon-h"> </span><span class="crayon-r">TABLE</span><span class="crayon-h"> </span>EMP<span class="crayon-h"> </span>(</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-13"><span class="crayon-h">&nbsp;&nbsp;</span>EMPNO<span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>(4)<span class="crayon-h"> </span><span class="crayon-r">CONSTRAINT</span><span class="crayon-h"> </span>PK_EMP<span class="crayon-h"> </span><span class="crayon-r">PRIMARY</span><span class="crayon-h"> </span><span class="crayon-r">KEY</span>,</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-14"><span class="crayon-h">&nbsp;&nbsp;</span>ENAME<span class="crayon-h"> </span><span class="crayon-r">VARCHAR2</span>(10),</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-15"><span class="crayon-h">&nbsp;&nbsp;</span>JOB<span class="crayon-h"> </span><span class="crayon-r">VARCHAR2</span>(9),</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-16"><span class="crayon-h">&nbsp;&nbsp;</span>MGR<span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>(4),</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-17"><span class="crayon-h">&nbsp;&nbsp;</span>HIREDATE<span class="crayon-h"> </span><span class="crayon-r">DATE</span>,</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-18"><span class="crayon-h">&nbsp;&nbsp;</span>SAL<span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>(7,2),</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-19"><span class="crayon-h">&nbsp;&nbsp;</span>COMM<span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>(7,2),</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-20"><span class="crayon-h">&nbsp;&nbsp;</span>DEPTNO<span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>(2)<span class="crayon-h"> </span><span class="crayon-r">CONSTRAINT</span><span class="crayon-h"> </span>FK_DEPTNO<span class="crayon-h"> </span><span class="crayon-r">REFERENCES</span><span class="crayon-h"> </span>DEPT</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-21">);</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-22">&nbsp;</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-23"><span class="crayon-c">--И добавим в таблицы EMP и DEPT следующие данные:</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-24"><span class="crayon-c">--DEPT</span></div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-25"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>DEPT<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(10,<span class="crayon-s">'ACCOUNTING'</span>,<span class="crayon-s">'NEW YORK'</span>);</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-26"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>DEPT<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(20,<span class="crayon-s">'RESEARCH'</span>,<span class="crayon-s">'DALLAS'</span>);</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-27"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>DEPT<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(30,<span class="crayon-s">'SALES'</span>,<span class="crayon-s">'CHICAGO'</span>);</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-28"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>DEPT<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(40,<span class="crayon-s">'OPERATIONS'</span>,<span class="crayon-s">'BOSTON'</span>);</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-29"><span class="crayon-c">--EMP</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-30"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>EMP<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(7369,<span class="crayon-s">'SMITH'</span>,<span class="crayon-s">'CLERK'</span>,7902,<span class="crayon-k">to_date</span>(<span class="crayon-s">'17.12.1980'</span>,<span class="crayon-s">'dd.mm.yyyy'</span>),800,<span class="crayon-r">NULL</span>,20);</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-31"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>EMP<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(7499,<span class="crayon-s">'ALLEN'</span>,<span class="crayon-s">'SALESMAN'</span>,7698,<span class="crayon-k">to_date</span>(<span class="crayon-s">'20.2.1981'</span>,<span class="crayon-s">'dd.mm.yyyy'</span>),1600,300,30);</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-32"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>EMP<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(7521,<span class="crayon-s">'WARD'</span>,<span class="crayon-s">'SALESMAN'</span>,7698,<span class="crayon-k">to_date</span>(<span class="crayon-s">'22.2.1981'</span>,<span class="crayon-s">'dd.mm.yyyy'</span>),1250,500,30);</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-33"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>EMP<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(7566,<span class="crayon-s">'JONES'</span>,<span class="crayon-s">'MANAGER'</span>,7839,<span class="crayon-k">to_date</span>(<span class="crayon-s">'2.4.1981'</span>,<span class="crayon-s">'dd.mm.yyyy'</span>),2975,<span class="crayon-r">NULL</span>,20);</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-34"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>EMP<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(7654,<span class="crayon-s">'MARTIN'</span>,<span class="crayon-s">'SALESMAN'</span>,7698,<span class="crayon-k">to_date</span>(<span class="crayon-s">'28.9.1981'</span>,<span class="crayon-s">'dd.mm.yyyy'</span>),1250,1400,30);</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-35"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>EMP<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(7698,<span class="crayon-s">'BLAKE'</span>,<span class="crayon-s">'MANAGER'</span>,7839,<span class="crayon-k">to_date</span>(<span class="crayon-s">'1.5.1981'</span>,<span class="crayon-s">'dd.mm.yyyy'</span>),2850,<span class="crayon-r">NULL</span>,30);</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-36"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>EMP<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(7782,<span class="crayon-s">'CLARK'</span>,<span class="crayon-s">'MANAGER'</span>,7839,<span class="crayon-k">to_date</span>(<span class="crayon-s">'9.6.1981'</span>,<span class="crayon-s">'dd.mm.yyyy'</span>),2450,<span class="crayon-r">NULL</span>,10);</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-37"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>EMP<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(7788,<span class="crayon-s">'SCOTT'</span>,<span class="crayon-s">'ANALYST'</span>,7566,<span class="crayon-k">to_date</span>(<span class="crayon-s">'13.7.87'</span>,<span class="crayon-s">'dd.mm.rr'</span>).85,3000,<span class="crayon-r">NULL</span>,20);</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-38"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>EMP<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(7839,<span class="crayon-s">'KING'</span>,<span class="crayon-s">'PRESIDENT'</span>,<span class="crayon-r">NULL</span>,<span class="crayon-k">to_date</span>(<span class="crayon-s">'17.11.1981'</span>,<span class="crayon-s">'dd.mm.yyyy'</span>),5000,<span class="crayon-r">NULL</span>,10);</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-39"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>EMP<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(7844,<span class="crayon-s">'TURNER'</span>,<span class="crayon-s">'SALESMAN'</span>,7698,<span class="crayon-k">to_date</span>(<span class="crayon-s">'8.9.1981'</span>,<span class="crayon-s">'dd.mm.yyyy'</span>),1500,0,30);</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-40"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>EMP<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(7876,<span class="crayon-s">'ADAMS'</span>,<span class="crayon-s">'CLERK'</span>,7788,<span class="crayon-k">to_date</span>(<span class="crayon-s">'13.7.87'</span>,<span class="crayon-h"> </span><span class="crayon-s">'dd.mm.rr'</span>).51,1100,<span class="crayon-r">NULL</span>,20);</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-41"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>EMP<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(7900,<span class="crayon-s">'JAMES'</span>,<span class="crayon-s">'CLERK'</span>,7698,<span class="crayon-k">to_date</span>(<span class="crayon-s">'3.12.1981'</span>,<span class="crayon-s">'dd.mm.yyyy'</span>),950,<span class="crayon-r">NULL</span>,30);</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-42"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>EMP<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(7902,<span class="crayon-s">'FORD'</span>,<span class="crayon-s">'ANALYST'</span>,7566,<span class="crayon-k">to_date</span>(<span class="crayon-s">'3.12.1981'</span>,<span class="crayon-s">'dd.mm.yyyy'</span>),3000,<span class="crayon-r">NULL</span>,20);</div><div class="crayon-line" id="crayon-63f8298c33c0d248632294-43"><span class="crayon-h">	</span><span class="crayon-r">INSERT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>EMP<span class="crayon-h"> </span><span class="crayon-r">VALUES</span><span class="crayon-h"> </span>(7934,<span class="crayon-s">'MILLER'</span>,<span class="crayon-s">'CLERK'</span>,7782,<span class="crayon-k">to_date</span>(<span class="crayon-s">'23.1.1982'</span>,<span class="crayon-s">'dd.mm.yyyy'</span>),1300,<span class="crayon-r">NULL</span>,10);</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c0d248632294-44"><span class="crayon-r">COMMIT</span>;</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0023 seconds] -->
+<p></p>
+<p><a name="one_subq"></a></p>
+<h3>Пример WITH с одним подзапросом</h3>
+<p>Рассмотрим пример sql оператора with c одним подзапросом, чтобы понять как использовать оператор with в Oracle PL/SQL.<br />
+Например:</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f8298c33c13311970511" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Oracle PL/SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+WITH employee AS (SELECT * FROM emp)
+SELECT * FROM employee WHERE empno &gt; 7900
+ UNION ALL
+SELECT * FROM employee WHERE sal &gt; 3000</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f8298c33c13311970511-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c13311970511-2">2</div><div class="crayon-num" data-line="crayon-63f8298c33c13311970511-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c13311970511-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f8298c33c13311970511-1"><span class="crayon-r">WITH</span><span class="crayon-h"> </span>employee<span class="crayon-h"> </span><span class="crayon-r">AS</span><span class="crayon-h"> </span>(<span class="crayon-r">SELECT</span><span class="crayon-h"> </span>*<span class="crayon-h"> </span><span class="crayon-r">FROM</span><span class="crayon-h"> </span>emp)</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c13311970511-2"><span class="crayon-r">SELECT</span><span class="crayon-h"> </span>*<span class="crayon-h"> </span><span class="crayon-r">FROM</span><span class="crayon-h"> </span>employee<span class="crayon-h"> </span><span class="crayon-r">WHERE</span><span class="crayon-h"> </span>empno<span class="crayon-h"> </span><span class="crayon-h">&gt;</span><span class="crayon-h"> </span>7900</div><div class="crayon-line" id="crayon-63f8298c33c13311970511-3"><span class="crayon-h"> </span><span class="crayon-r">UNION</span><span class="crayon-h"> </span><span class="crayon-r">ALL</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c13311970511-4"><span class="crayon-r">SELECT</span><span class="crayon-h"> </span>*<span class="crayon-h"> </span><span class="crayon-r">FROM</span><span class="crayon-h"> </span>employee<span class="crayon-h"> </span><span class="crayon-r">WHERE</span><span class="crayon-h"> </span>sal<span class="crayon-h"> </span><span class="crayon-h">&gt;</span><span class="crayon-h"> </span>3000</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<p>В этом примере мы создали подзапрос с псевдонимом <span class="arg">employee</span> из таблицы <span class="arg">Employees</span> (сотрудников). Затем с помощью двух основных запросов и оператора <a href="index.html%3Fp=2586.html">UNION ALL</a> запросили данные всех сотрудников у которых <span class="arg">empno</span> > 7900 и всех сотрудников у которых <span class="arg">sal</span> > 3000.</p>
+<p>В следующем примере мы хотим узнать сколько людей в отделе для каждого сотрудника.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f8298c33c18685618062" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Oracle PL/SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+WITH dept_count AS (
+  SELECT deptno, COUNT(*) AS dept_count
+    FROM emp
+   GROUP BY deptno)
+SELECT e.ename AS employee_name,
+       dc.dept_count AS emp_dept_count
+  FROM emp e
+  JOIN dept_count dc ON e.deptno = dc.deptno;</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f8298c33c18685618062-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c18685618062-2">2</div><div class="crayon-num" data-line="crayon-63f8298c33c18685618062-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c18685618062-4">4</div><div class="crayon-num" data-line="crayon-63f8298c33c18685618062-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c18685618062-6">6</div><div class="crayon-num" data-line="crayon-63f8298c33c18685618062-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c18685618062-8">8</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f8298c33c18685618062-1"><span class="crayon-r">WITH</span><span class="crayon-h"> </span>dept_count<span class="crayon-h"> </span><span class="crayon-r">AS</span><span class="crayon-h"> </span>(</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c18685618062-2"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">SELECT</span><span class="crayon-h"> </span>deptno,<span class="crayon-h"> </span><span class="crayon-st">COUNT</span>(*)<span class="crayon-h"> </span><span class="crayon-r">AS</span><span class="crayon-h"> </span>dept_count</div><div class="crayon-line" id="crayon-63f8298c33c18685618062-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">FROM</span><span class="crayon-h"> </span>emp</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c18685618062-4"><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-r">GROUP</span><span class="crayon-h"> </span><span class="crayon-r">BY</span><span class="crayon-h"> </span>deptno)</div><div class="crayon-line" id="crayon-63f8298c33c18685618062-5"><span class="crayon-r">SELECT</span><span class="crayon-h"> </span>e.ename<span class="crayon-h"> </span><span class="crayon-r">AS</span><span class="crayon-h"> </span>employee_name,</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c18685618062-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>dc.dept_count<span class="crayon-h"> </span><span class="crayon-r">AS</span><span class="crayon-h"> </span>emp_dept_count</div><div class="crayon-line" id="crayon-63f8298c33c18685618062-7"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">FROM</span><span class="crayon-h"> </span>emp<span class="crayon-h"> </span>e</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c18685618062-8"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-st">JOIN</span><span class="crayon-h"> </span>dept_count<span class="crayon-h"> </span>dc<span class="crayon-h"> </span><span class="crayon-r">ON</span><span class="crayon-h"> </span>e.deptno<span class="crayon-h"> </span>=<span class="crayon-h"> </span>dc.deptno;</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p></p>
+<p><a name="more_subq"></a></p>
+<h3>Пример WITH с двумя подзапросами</h3>
+<p>Для примера использования оператор WITH, создадим несколько таблиц с данными.</p>
+<p>Например нам может понадобится выбрать отделы с заработной платой выше среднего. Для этого сначала в первом подзапросе <span class="arg">dept_costs</span> определим сумму зарплат по отделам. Затем во втором подзапросе <span class="arg">avg_cost</span> определим среднюю зарплату по отделам.<br />
+Например.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f8298c33c1a140744579" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Oracle PL/SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+WITH
+  dept_costs AS (
+    SELECT dname, SUM(sal) dept_total
+      FROM   emp e, dept d
+     WHERE  e.deptno = d.deptno
+     GROUP BY dname
+	 ),
+  avg_cost AS (
+    SELECT SUM(dept_total)/COUNT(*) avg
+      FROM dept_costs
+	  )
+SELECT *
+  FROM dept_costs
+ WHERE  dept_total &gt; (SELECT avg FROM avg_cost)
+ ORDER BY dname;</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f8298c33c1a140744579-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1a140744579-2">2</div><div class="crayon-num" data-line="crayon-63f8298c33c1a140744579-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1a140744579-4">4</div><div class="crayon-num" data-line="crayon-63f8298c33c1a140744579-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1a140744579-6">6</div><div class="crayon-num" data-line="crayon-63f8298c33c1a140744579-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1a140744579-8">8</div><div class="crayon-num" data-line="crayon-63f8298c33c1a140744579-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1a140744579-10">10</div><div class="crayon-num" data-line="crayon-63f8298c33c1a140744579-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1a140744579-12">12</div><div class="crayon-num" data-line="crayon-63f8298c33c1a140744579-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1a140744579-14">14</div><div class="crayon-num" data-line="crayon-63f8298c33c1a140744579-15">15</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f8298c33c1a140744579-1"><span class="crayon-r">WITH</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1a140744579-2"><span class="crayon-h">&nbsp;&nbsp;</span>dept_costs<span class="crayon-h"> </span><span class="crayon-r">AS</span><span class="crayon-h"> </span>(</div><div class="crayon-line" id="crayon-63f8298c33c1a140744579-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">SELECT</span><span class="crayon-h"> </span>dname,<span class="crayon-h"> </span><span class="crayon-st">SUM</span>(sal)<span class="crayon-h"> </span>dept_total</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1a140744579-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">FROM</span><span class="crayon-h">&nbsp;&nbsp; </span>emp<span class="crayon-h"> </span>e,<span class="crayon-h"> </span>dept<span class="crayon-h"> </span>d</div><div class="crayon-line" id="crayon-63f8298c33c1a140744579-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-r">WHERE</span><span class="crayon-h">&nbsp;&nbsp;</span>e.deptno<span class="crayon-h"> </span>=<span class="crayon-h"> </span>d.deptno</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1a140744579-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-r">GROUP</span><span class="crayon-h"> </span><span class="crayon-r">BY</span><span class="crayon-h"> </span>dname</div><div class="crayon-line" id="crayon-63f8298c33c1a140744579-7"><span class="crayon-h">	 </span>),</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1a140744579-8"><span class="crayon-h">&nbsp;&nbsp;</span>avg_cost<span class="crayon-h"> </span><span class="crayon-r">AS</span><span class="crayon-h"> </span>(</div><div class="crayon-line" id="crayon-63f8298c33c1a140744579-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">SELECT</span><span class="crayon-h"> </span><span class="crayon-st">SUM</span>(dept_total)/<span class="crayon-st">COUNT</span>(*)<span class="crayon-h"> </span><span class="crayon-st">avg</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1a140744579-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">FROM</span><span class="crayon-h"> </span>dept_costs</div><div class="crayon-line" id="crayon-63f8298c33c1a140744579-11"><span class="crayon-h">	&nbsp;&nbsp;</span>)</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1a140744579-12"><span class="crayon-r">SELECT</span><span class="crayon-h"> </span>*</div><div class="crayon-line" id="crayon-63f8298c33c1a140744579-13"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">FROM</span><span class="crayon-h"> </span>dept_costs</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1a140744579-14"><span class="crayon-h"> </span><span class="crayon-r">WHERE</span><span class="crayon-h">&nbsp;&nbsp;</span>dept_total<span class="crayon-h"> </span><span class="crayon-h">&gt;</span><span class="crayon-h"> </span>(<span class="crayon-r">SELECT</span><span class="crayon-h"> </span><span class="crayon-st">avg</span><span class="crayon-h"> </span><span class="crayon-r">FROM</span><span class="crayon-h"> </span>avg_cost)</div><div class="crayon-line" id="crayon-63f8298c33c1a140744579-15"><span class="crayon-h"> </span><span class="crayon-r">ORDER</span><span class="crayon-h"> </span><span class="crayon-r">BY</span><span class="crayon-h"> </span>dname;</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p></p>
+<p><a name="func_subq"></a></p>
+<h2>Пример WITH с функцией</h2>
+<p>Для примеров оператора WITH необходимо создать следующую тестовую таблицу.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f8298c33c1d565162898" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Oracle PL/SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+DROP TABLE t1 PURGE;
+
+CREATE TABLE t1 AS
+SELECT 1 AS id
+FROM   dual
+CONNECT BY level &lt;= 1000000;
+
+-- Сбор статистики на CTAS больше не требуется в 12c,
+-- при условии, что запрос выдается не-SYS пользователем.
+-- EXEC DBMS_STATS.gather_table_stats (USER, 't1');</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f8298c33c1d565162898-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1d565162898-2">2</div><div class="crayon-num" data-line="crayon-63f8298c33c1d565162898-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1d565162898-4">4</div><div class="crayon-num" data-line="crayon-63f8298c33c1d565162898-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1d565162898-6">6</div><div class="crayon-num" data-line="crayon-63f8298c33c1d565162898-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1d565162898-8">8</div><div class="crayon-num" data-line="crayon-63f8298c33c1d565162898-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1d565162898-10">10</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f8298c33c1d565162898-1"><span class="crayon-r">DROP</span><span class="crayon-h"> </span><span class="crayon-r">TABLE</span><span class="crayon-h"> </span>t1<span class="crayon-h"> </span><span class="crayon-r">PURGE</span>;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1d565162898-2">&nbsp;</div><div class="crayon-line" id="crayon-63f8298c33c1d565162898-3"><span class="crayon-r">CREATE</span><span class="crayon-h"> </span><span class="crayon-r">TABLE</span><span class="crayon-h"> </span>t1<span class="crayon-h"> </span><span class="crayon-r">AS</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1d565162898-4"><span class="crayon-r">SELECT</span><span class="crayon-h"> </span>1<span class="crayon-h"> </span><span class="crayon-r">AS</span><span class="crayon-h"> </span>id</div><div class="crayon-line" id="crayon-63f8298c33c1d565162898-5"><span class="crayon-r">FROM</span><span class="crayon-h">&nbsp;&nbsp; </span>dual</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1d565162898-6"><span class="crayon-r">CONNECT</span><span class="crayon-h"> </span><span class="crayon-r">BY</span><span class="crayon-h"> </span><span class="crayon-r">level</span><span class="crayon-h"> </span><span class="crayon-h">&lt;</span>=<span class="crayon-h"> </span>1000000;</div><div class="crayon-line" id="crayon-63f8298c33c1d565162898-7">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1d565162898-8"><span class="crayon-c">-- Сбор статистики на CTAS больше не требуется в 12c,</span></div><div class="crayon-line" id="crayon-63f8298c33c1d565162898-9"><span class="crayon-c">-- при условии, что запрос выдается не-SYS пользователем.</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1d565162898-10"><span class="crayon-c">-- EXEC DBMS_STATS.gather_table_stats (USER, 't1');</span></div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<p>В этом операторе WITH раздел объявления может использоваться для определения функций PL/SQL, как показано ниже.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f8298c33c1f059339053" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Oracle PL/SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+WITH
+  FUNCTION with_function(p_id IN NUMBER) RETURN NUMBER IS
+  BEGIN
+    RETURN p_id;
+  END;
+SELECT with_function(id)
+  FROM   t1
+ WHERE  rownum = 1
+
+--результат
+WITH_FUNCTION(ID)
+-----------------
+                1</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f8298c33c1f059339053-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1f059339053-2">2</div><div class="crayon-num" data-line="crayon-63f8298c33c1f059339053-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1f059339053-4">4</div><div class="crayon-num" data-line="crayon-63f8298c33c1f059339053-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1f059339053-6">6</div><div class="crayon-num" data-line="crayon-63f8298c33c1f059339053-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1f059339053-8">8</div><div class="crayon-num" data-line="crayon-63f8298c33c1f059339053-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1f059339053-10">10</div><div class="crayon-num" data-line="crayon-63f8298c33c1f059339053-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c1f059339053-12">12</div><div class="crayon-num" data-line="crayon-63f8298c33c1f059339053-13">13</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f8298c33c1f059339053-1"><span class="crayon-r">WITH</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1f059339053-2"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">FUNCTION</span><span class="crayon-h"> </span>with_function(p_id<span class="crayon-h"> </span><span class="crayon-r">IN</span><span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>)<span class="crayon-h"> </span><span class="crayon-r">RETURN</span><span class="crayon-h"> </span><span class="crayon-r">NUMBER</span><span class="crayon-h"> </span><span class="crayon-r">IS</span></div><div class="crayon-line" id="crayon-63f8298c33c1f059339053-3"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">BEGIN</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1f059339053-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">RETURN</span><span class="crayon-h"> </span>p_id;</div><div class="crayon-line" id="crayon-63f8298c33c1f059339053-5"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">END</span>;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1f059339053-6"><span class="crayon-r">SELECT</span><span class="crayon-h"> </span>with_function(id)</div><div class="crayon-line" id="crayon-63f8298c33c1f059339053-7"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">FROM</span><span class="crayon-h">&nbsp;&nbsp; </span>t1</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1f059339053-8"><span class="crayon-h"> </span><span class="crayon-r">WHERE</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">rownum</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span>1</div><div class="crayon-line" id="crayon-63f8298c33c1f059339053-9">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1f059339053-10"><span class="crayon-c">--результат</span></div><div class="crayon-line" id="crayon-63f8298c33c1f059339053-11">WITH_FUNCTION(ID)</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c1f059339053-12"><span class="crayon-c">-----------------</span></div><div class="crayon-line" id="crayon-63f8298c33c1f059339053-13"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>1</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<p>С точки зрения разрешения имен функций, определенных в разделе объявлений PL/SQL оператора WITH, имеют приоритет над объектами с тем же именем, определенным на уровне схемы.</p>
+<p><a name="proc_subq"></a></p>
+<h2>Пример WITH с процедурой</h2>
+<p>Мы также можем определить процедуры в разделе объявлений оператора WITH, даже если они не используются.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f8298c33c22772983336" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Oracle PL/SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+WITH
+  PROCEDURE with_procedure(p_id IN NUMBER) IS
+  BEGIN
+    DBMS_OUTPUT.put_line('p_id=' || p_id);
+  END;
+SELECT id
+  FROM   t1
+ WHERE  rownum = 1
+
+--результат        
+		ID
+----------
+         1</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f8298c33c22772983336-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c22772983336-2">2</div><div class="crayon-num" data-line="crayon-63f8298c33c22772983336-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c22772983336-4">4</div><div class="crayon-num" data-line="crayon-63f8298c33c22772983336-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c22772983336-6">6</div><div class="crayon-num" data-line="crayon-63f8298c33c22772983336-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c22772983336-8">8</div><div class="crayon-num" data-line="crayon-63f8298c33c22772983336-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c22772983336-10">10</div><div class="crayon-num" data-line="crayon-63f8298c33c22772983336-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c22772983336-12">12</div><div class="crayon-num" data-line="crayon-63f8298c33c22772983336-13">13</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f8298c33c22772983336-1"><span class="crayon-r">WITH</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c22772983336-2"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">PROCEDURE</span><span class="crayon-h"> </span>with_procedure(p_id<span class="crayon-h"> </span><span class="crayon-r">IN</span><span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>)<span class="crayon-h"> </span><span class="crayon-r">IS</span></div><div class="crayon-line" id="crayon-63f8298c33c22772983336-3"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">BEGIN</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c22772983336-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span>DBMS_OUTPUT.put_line(<span class="crayon-s">'p_id='</span><span class="crayon-h"> </span>||<span class="crayon-h"> </span>p_id);</div><div class="crayon-line" id="crayon-63f8298c33c22772983336-5"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">END</span>;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c22772983336-6"><span class="crayon-r">SELECT</span><span class="crayon-h"> </span>id</div><div class="crayon-line" id="crayon-63f8298c33c22772983336-7"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">FROM</span><span class="crayon-h">&nbsp;&nbsp; </span>t1</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c22772983336-8"><span class="crayon-h"> </span><span class="crayon-r">WHERE</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">rownum</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span>1</div><div class="crayon-line" id="crayon-63f8298c33c22772983336-9">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c22772983336-10"><span class="crayon-c">--результат&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-63f8298c33c22772983336-11"><span class="crayon-h">		</span>ID</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c22772983336-12"><span class="crayon-c">----------</span></div><div class="crayon-line" id="crayon-63f8298c33c22772983336-13"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>1</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<p>В действительности вы поместили бы процедуру в операторе WITH, только если бы планировали вызывать процедуру из функции в разделе объявлений.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f8298c33c24094614934" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Oracle PL/SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+WITH
+  PROCEDURE with_procedure(p_id IN NUMBER) IS
+  BEGIN
+    DBMS_OUTPUT.put_line('p_id=' || p_id);
+  END;
+
+  FUNCTION with_function(p_id IN NUMBER) RETURN NUMBER IS
+  BEGIN
+    with_procedure(p_id);
+    RETURN p_id;
+  END;
+SELECT with_function(id)
+  FROM   t1
+ WHERE  rownum = 1
+
+--результат
+WITH_FUNCTION(ID)
+-----------------
+                1
+
+p_id=1</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f8298c33c24094614934-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c24094614934-2">2</div><div class="crayon-num" data-line="crayon-63f8298c33c24094614934-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c24094614934-4">4</div><div class="crayon-num" data-line="crayon-63f8298c33c24094614934-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c24094614934-6">6</div><div class="crayon-num" data-line="crayon-63f8298c33c24094614934-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c24094614934-8">8</div><div class="crayon-num" data-line="crayon-63f8298c33c24094614934-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c24094614934-10">10</div><div class="crayon-num" data-line="crayon-63f8298c33c24094614934-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c24094614934-12">12</div><div class="crayon-num" data-line="crayon-63f8298c33c24094614934-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c24094614934-14">14</div><div class="crayon-num" data-line="crayon-63f8298c33c24094614934-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c24094614934-16">16</div><div class="crayon-num" data-line="crayon-63f8298c33c24094614934-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c24094614934-18">18</div><div class="crayon-num" data-line="crayon-63f8298c33c24094614934-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c24094614934-20">20</div><div class="crayon-num" data-line="crayon-63f8298c33c24094614934-21">21</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f8298c33c24094614934-1"><span class="crayon-r">WITH</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c24094614934-2"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">PROCEDURE</span><span class="crayon-h"> </span>with_procedure(p_id<span class="crayon-h"> </span><span class="crayon-r">IN</span><span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>)<span class="crayon-h"> </span><span class="crayon-r">IS</span></div><div class="crayon-line" id="crayon-63f8298c33c24094614934-3"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">BEGIN</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c24094614934-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span>DBMS_OUTPUT.put_line(<span class="crayon-s">'p_id='</span><span class="crayon-h"> </span>||<span class="crayon-h"> </span>p_id);</div><div class="crayon-line" id="crayon-63f8298c33c24094614934-5"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">END</span>;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c24094614934-6">&nbsp;</div><div class="crayon-line" id="crayon-63f8298c33c24094614934-7"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">FUNCTION</span><span class="crayon-h"> </span>with_function(p_id<span class="crayon-h"> </span><span class="crayon-r">IN</span><span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>)<span class="crayon-h"> </span><span class="crayon-r">RETURN</span><span class="crayon-h"> </span><span class="crayon-r">NUMBER</span><span class="crayon-h"> </span><span class="crayon-r">IS</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c24094614934-8"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">BEGIN</span></div><div class="crayon-line" id="crayon-63f8298c33c24094614934-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span>with_procedure(p_id);</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c24094614934-10"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">RETURN</span><span class="crayon-h"> </span>p_id;</div><div class="crayon-line" id="crayon-63f8298c33c24094614934-11"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">END</span>;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c24094614934-12"><span class="crayon-r">SELECT</span><span class="crayon-h"> </span>with_function(id)</div><div class="crayon-line" id="crayon-63f8298c33c24094614934-13"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">FROM</span><span class="crayon-h">&nbsp;&nbsp; </span>t1</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c24094614934-14"><span class="crayon-h"> </span><span class="crayon-r">WHERE</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">rownum</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span>1</div><div class="crayon-line" id="crayon-63f8298c33c24094614934-15">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c24094614934-16"><span class="crayon-c">--результат</span></div><div class="crayon-line" id="crayon-63f8298c33c24094614934-17">WITH_FUNCTION(ID)</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c24094614934-18"><span class="crayon-c">-----------------</span></div><div class="crayon-line" id="crayon-63f8298c33c24094614934-19"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>1</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c24094614934-20">&nbsp;</div><div class="crayon-line" id="crayon-63f8298c33c24094614934-21">p_id<span class="crayon-o">=</span>1</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p></p>
+<p>Похоже, что эта функция не поддерживается PL/SQL. Любая попытка ее использования приводит к ошибкам компиляции, как показано ниже.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f8298c33c27266653005" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Oracle PL/SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+BEGIN
+  FOR cur_rec IN (WITH
+                    FUNCTION with_function(p_id IN NUMBER) RETURN NUMBER IS
+                    BEGIN
+                      RETURN p_id;
+                    END;
+                  SELECT with_function(id)
+                  FROM   t1
+                  WHERE  rownum = 1)
+  LOOP
+    NULL;
+  END LOOP;
+END;
+
+FUNCTION with_function(p_id IN NUMBER) RETURN NUMBER IS
+                             *
+ERROR at line 3:
+ORA-06550: line 3, column 30:
+PL/SQL: ORA-00905: missing keyword
+ORA-06550: line 2, column 19:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 5, column 34:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+loop</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f8298c33c27266653005-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c27266653005-2">2</div><div class="crayon-num" data-line="crayon-63f8298c33c27266653005-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c27266653005-4">4</div><div class="crayon-num" data-line="crayon-63f8298c33c27266653005-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c27266653005-6">6</div><div class="crayon-num" data-line="crayon-63f8298c33c27266653005-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c27266653005-8">8</div><div class="crayon-num" data-line="crayon-63f8298c33c27266653005-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c27266653005-10">10</div><div class="crayon-num" data-line="crayon-63f8298c33c27266653005-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c27266653005-12">12</div><div class="crayon-num" data-line="crayon-63f8298c33c27266653005-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c27266653005-14">14</div><div class="crayon-num" data-line="crayon-63f8298c33c27266653005-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c27266653005-16">16</div><div class="crayon-num" data-line="crayon-63f8298c33c27266653005-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c27266653005-18">18</div><div class="crayon-num" data-line="crayon-63f8298c33c27266653005-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c27266653005-20">20</div><div class="crayon-num" data-line="crayon-63f8298c33c27266653005-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c27266653005-22">22</div><div class="crayon-num" data-line="crayon-63f8298c33c27266653005-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c27266653005-24">24</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f8298c33c27266653005-1"><span class="crayon-r">BEGIN</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c27266653005-2"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">FOR</span><span class="crayon-h"> </span>cur_rec<span class="crayon-h"> </span><span class="crayon-r">IN</span><span class="crayon-h"> </span>(<span class="crayon-r">WITH</span></div><div class="crayon-line" id="crayon-63f8298c33c27266653005-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">FUNCTION</span><span class="crayon-h"> </span>with_function(p_id<span class="crayon-h"> </span><span class="crayon-r">IN</span><span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>)<span class="crayon-h"> </span><span class="crayon-r">RETURN</span><span class="crayon-h"> </span><span class="crayon-r">NUMBER</span><span class="crayon-h"> </span><span class="crayon-r">IS</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c27266653005-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">BEGIN</span></div><div class="crayon-line" id="crayon-63f8298c33c27266653005-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">RETURN</span><span class="crayon-h"> </span>p_id;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c27266653005-6"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">END</span>;</div><div class="crayon-line" id="crayon-63f8298c33c27266653005-7"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">SELECT</span><span class="crayon-h"> </span>with_function(id)</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c27266653005-8"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">FROM</span><span class="crayon-h">&nbsp;&nbsp; </span>t1</div><div class="crayon-line" id="crayon-63f8298c33c27266653005-9"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">WHERE</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">rownum</span><span class="crayon-h"> </span>=<span class="crayon-h"> </span>1)</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c27266653005-10"><span class="crayon-h">&nbsp;&nbsp;</span>LOOP</div><div class="crayon-line" id="crayon-63f8298c33c27266653005-11"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-r">NULL</span>;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c27266653005-12"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">END</span><span class="crayon-h"> </span>LOOP;</div><div class="crayon-line" id="crayon-63f8298c33c27266653005-13"><span class="crayon-r">END</span>;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c27266653005-14">&nbsp;</div><div class="crayon-line" id="crayon-63f8298c33c27266653005-15"><span class="crayon-r">FUNCTION</span><span class="crayon-h"> </span>with_function(p_id<span class="crayon-h"> </span><span class="crayon-r">IN</span><span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>)<span class="crayon-h"> </span><span class="crayon-r">RETURN</span><span class="crayon-h"> </span><span class="crayon-r">NUMBER</span><span class="crayon-h"> </span><span class="crayon-r">IS</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c27266653005-16"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>*</div><div class="crayon-line" id="crayon-63f8298c33c27266653005-17">ERROR<span class="crayon-h"> </span><span class="crayon-r">at</span><span class="crayon-h"> </span>line<span class="crayon-h"> </span>3:</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c27266653005-18">ORA<span class="crayon-o">-</span>06550:<span class="crayon-h"> </span>line<span class="crayon-h"> </span>3,<span class="crayon-h"> </span><span class="crayon-r">column</span><span class="crayon-h"> </span>30:</div><div class="crayon-line" id="crayon-63f8298c33c27266653005-19">PL<span class="crayon-o">/</span><span class="crayon-r">SQL</span>:<span class="crayon-h"> </span>ORA<span class="crayon-o">-</span>00905:<span class="crayon-h"> </span>missing<span class="crayon-h"> </span>keyword</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c27266653005-20">ORA<span class="crayon-o">-</span>06550:<span class="crayon-h"> </span>line<span class="crayon-h"> </span>2,<span class="crayon-h"> </span><span class="crayon-r">column</span><span class="crayon-h"> </span>19:</div><div class="crayon-line" id="crayon-63f8298c33c27266653005-21">PL<span class="crayon-o">/</span><span class="crayon-r">SQL</span>:<span class="crayon-h"> </span><span class="crayon-r">SQL</span><span class="crayon-h"> </span>Statement<span class="crayon-h"> </span>ignored</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c27266653005-22">ORA<span class="crayon-o">-</span>06550:<span class="crayon-h"> </span>line<span class="crayon-h"> </span>5,<span class="crayon-h"> </span><span class="crayon-r">column</span><span class="crayon-h"> </span>34:</div><div class="crayon-line" id="crayon-63f8298c33c27266653005-23">PLS<span class="crayon-o">-</span>00103:<span class="crayon-h"> </span>Encountered<span class="crayon-h"> </span><span class="crayon-r">the</span><span class="crayon-h"> </span>symbol<span class="crayon-h"> </span><span class="crayon-i">";"</span><span class="crayon-h"> </span><span class="crayon-r">when</span><span class="crayon-h"> </span>expecting<span class="crayon-h"> </span>one<span class="crayon-h"> </span><span class="crayon-r">of</span><span class="crayon-h"> </span><span class="crayon-r">the</span><span class="crayon-h"> </span>following:</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c27266653005-24">loop</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0004 seconds] -->
+<p></p>
+<p>Использование динамического SQL позволяет обойти это ограничение.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f8298c33c29535698083" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Oracle PL/SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+SET SERVEROUTPUT ON
+DECLARE
+  l_sql     VARCHAR2(32767);
+  l_cursor  SYS_REFCURSOR;
+  l_value   NUMBER;
+BEGIN
+  l_sql := 'WITH
+              FUNCTION with_function(p_id IN NUMBER) RETURN NUMBER IS
+              BEGIN
+                RETURN p_id;
+              END;
+            SELECT with_function(id)
+            FROM   t1
+            WHERE  rownum = 1';
+  
+  OPEN l_cursor FOR l_sql;
+  FETCH l_cursor INTO l_value;
+  DBMS_OUTPUT.put_line('l_value=' || l_value);
+  CLOSE l_cursor;
+END;
+
+l_value=1
+
+PL/SQL procedure successfully completed.</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f8298c33c29535698083-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c29535698083-2">2</div><div class="crayon-num" data-line="crayon-63f8298c33c29535698083-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c29535698083-4">4</div><div class="crayon-num" data-line="crayon-63f8298c33c29535698083-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c29535698083-6">6</div><div class="crayon-num" data-line="crayon-63f8298c33c29535698083-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c29535698083-8">8</div><div class="crayon-num" data-line="crayon-63f8298c33c29535698083-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c29535698083-10">10</div><div class="crayon-num" data-line="crayon-63f8298c33c29535698083-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c29535698083-12">12</div><div class="crayon-num" data-line="crayon-63f8298c33c29535698083-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c29535698083-14">14</div><div class="crayon-num" data-line="crayon-63f8298c33c29535698083-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c29535698083-16">16</div><div class="crayon-num" data-line="crayon-63f8298c33c29535698083-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c29535698083-18">18</div><div class="crayon-num" data-line="crayon-63f8298c33c29535698083-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c29535698083-20">20</div><div class="crayon-num" data-line="crayon-63f8298c33c29535698083-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c29535698083-22">22</div><div class="crayon-num" data-line="crayon-63f8298c33c29535698083-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c29535698083-24">24</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f8298c33c29535698083-1"><span class="crayon-r">SET</span><span class="crayon-h"> </span>SERVEROUTPUT<span class="crayon-h"> </span><span class="crayon-r">ON</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c29535698083-2"><span class="crayon-r">DECLARE</span></div><div class="crayon-line" id="crayon-63f8298c33c29535698083-3"><span class="crayon-h">&nbsp;&nbsp;</span>l_sql<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-r">VARCHAR2</span>(32767);</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c29535698083-4"><span class="crayon-h">&nbsp;&nbsp;</span>l_cursor<span class="crayon-h">&nbsp;&nbsp;</span>SYS_REFCURSOR;</div><div class="crayon-line" id="crayon-63f8298c33c29535698083-5"><span class="crayon-h">&nbsp;&nbsp;</span>l_value<span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-r">NUMBER</span>;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c29535698083-6"><span class="crayon-r">BEGIN</span></div><div class="crayon-line" id="crayon-63f8298c33c29535698083-7"><span class="crayon-h">&nbsp;&nbsp;</span>l_sql<span class="crayon-h"> </span>:=<span class="crayon-h"> </span><span class="crayon-s">'WITH</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c29535698083-8"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FUNCTION with_function(p_id IN NUMBER) RETURN NUMBER IS</span></div><div class="crayon-line" id="crayon-63f8298c33c29535698083-9"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEGIN</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c29535698083-10"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RETURN p_id;</span></div><div class="crayon-line" id="crayon-63f8298c33c29535698083-11"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c29535698083-12"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT with_function(id)</span></div><div class="crayon-line" id="crayon-63f8298c33c29535698083-13"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;&nbsp; t1</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c29535698083-14"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;&nbsp;rownum = 1'</span>;</div><div class="crayon-line" id="crayon-63f8298c33c29535698083-15"><span class="crayon-h">&nbsp;&nbsp;</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c29535698083-16"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">OPEN</span><span class="crayon-h"> </span>l_cursor<span class="crayon-h"> </span><span class="crayon-r">FOR</span><span class="crayon-h"> </span>l_sql;</div><div class="crayon-line" id="crayon-63f8298c33c29535698083-17"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">FETCH</span><span class="crayon-h"> </span>l_cursor<span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>l_value;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c29535698083-18"><span class="crayon-h">&nbsp;&nbsp;</span>DBMS_OUTPUT.put_line(<span class="crayon-s">'l_value='</span><span class="crayon-h"> </span>||<span class="crayon-h"> </span>l_value);</div><div class="crayon-line" id="crayon-63f8298c33c29535698083-19"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">CLOSE</span><span class="crayon-h"> </span>l_cursor;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c29535698083-20"><span class="crayon-r">END</span>;</div><div class="crayon-line" id="crayon-63f8298c33c29535698083-21">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c29535698083-22">l_value<span class="crayon-o">=</span>1</div><div class="crayon-line" id="crayon-63f8298c33c29535698083-23">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c29535698083-24">PL<span class="crayon-o">/</span><span class="crayon-r">SQL</span><span class="crayon-h"> </span><span class="crayon-r">procedure</span><span class="crayon-h"> </span>successfully<span class="crayon-h"> </span>completed.</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p></p>
+<p>Поддержка этой функции с использованием статического SQL внутри PL/SQL ожидается в следующем релизе Oracle.</p>
+<h4>Преимущества производительности</h4>
+<p>Вся причина определения встроенного кода PL/SQL заключается в повышении производительности.<br />
+Создайте обычную функцию для использования в качестве сравнения.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f8298c33c2b324447379" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Oracle PL/SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+CREATE OR REPLACE FUNCTION normal_function(p_id IN NUMBER) RETURN NUMBER IS
+BEGIN
+  RETURN p_id;
+END;</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f8298c33c2b324447379-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2b324447379-2">2</div><div class="crayon-num" data-line="crayon-63f8298c33c2b324447379-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2b324447379-4">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f8298c33c2b324447379-1"><span class="crayon-r">CREATE</span><span class="crayon-h"> </span><span class="crayon-r">OR</span><span class="crayon-h"> </span><span class="crayon-r">REPLACE</span><span class="crayon-h"> </span><span class="crayon-r">FUNCTION</span><span class="crayon-h"> </span>normal_function(p_id<span class="crayon-h"> </span><span class="crayon-r">IN</span><span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>)<span class="crayon-h"> </span><span class="crayon-r">RETURN</span><span class="crayon-h"> </span><span class="crayon-r">NUMBER</span><span class="crayon-h"> </span><span class="crayon-r">IS</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2b324447379-2"><span class="crayon-r">BEGIN</span></div><div class="crayon-line" id="crayon-63f8298c33c2b324447379-3"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">RETURN</span><span class="crayon-h"> </span>p_id;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2b324447379-4"><span class="crayon-r">END</span>;</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<p>Запустите следующий тест, который измеряет затраченное время и загрузку ЦП запроса, используя определение встроенной функции.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f8298c33c2e999235022" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Oracle PL/SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+DECLARE
+  l_time    PLS_INTEGER;
+  l_cpu     PLS_INTEGER;
+  
+  l_sql     VARCHAR2(32767);
+  l_cursor  SYS_REFCURSOR;
+  
+  TYPE t_tab IS TABLE OF NUMBER;
+  l_tab t_tab;
+BEGIN
+  l_time := DBMS_UTILITY.get_time;
+  l_cpu  := DBMS_UTILITY.get_cpu_time;
+
+  l_sql := 'WITH
+              FUNCTION with_function(p_id IN NUMBER) RETURN NUMBER IS
+              BEGIN
+                RETURN p_id;
+              END;
+            SELECT with_function(id)
+            FROM   t1';
+            
+  OPEN l_cursor FOR l_sql;
+  FETCH l_cursor
+  BULK COLLECT INTO l_tab;
+  CLOSE l_cursor;
+  
+  DBMS_OUTPUT.put_line('WITH_FUNCTION  : ' ||
+                       'Time=' || TO_CHAR(DBMS_UTILITY.get_time - l_time) || ' hsecs ' ||
+                       'CPU Time=' || (DBMS_UTILITY.get_cpu_time - l_cpu) || ' hsecs ');
+
+  l_time := DBMS_UTILITY.get_time;
+  l_cpu  := DBMS_UTILITY.get_cpu_time;
+
+  l_sql := 'SELECT normal_function(id)
+            FROM   t1';
+            
+  OPEN l_cursor FOR l_sql;
+  FETCH l_cursor
+  BULK COLLECT INTO l_tab;
+  CLOSE l_cursor;
+  
+  DBMS_OUTPUT.put_line('NORMAL_FUNCTION: ' ||
+                       'Time=' || TO_CHAR(DBMS_UTILITY.get_time - l_time) || ' hsecs ' ||
+                       'CPU Time=' || (DBMS_UTILITY.get_cpu_time - l_cpu) || ' hsecs ');
+ 
+END;
+
+WITH_FUNCTION  : Time=45 hsecs CPU Time=39 hsecs
+NORMAL_FUNCTION: Time=129 hsecs CPU Time=113 hsecs
+
+PL/SQL procedure successfully completed.</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-2">2</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-4">4</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-6">6</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-8">8</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-10">10</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-12">12</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-14">14</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-16">16</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-18">18</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-20">20</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-22">22</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-24">24</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-26">26</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-28">28</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-30">30</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-32">32</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-34">34</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-36">36</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-37">37</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-38">38</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-39">39</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-40">40</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-41">41</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-42">42</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-43">43</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-44">44</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-45">45</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-46">46</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-47">47</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-48">48</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-49">49</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c2e999235022-50">50</div><div class="crayon-num" data-line="crayon-63f8298c33c2e999235022-51">51</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f8298c33c2e999235022-1"><span class="crayon-r">DECLARE</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-2"><span class="crayon-h">&nbsp;&nbsp;</span>l_time<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">PLS_INTEGER</span>;</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-3"><span class="crayon-h">&nbsp;&nbsp;</span>l_cpu<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-t">PLS_INTEGER</span>;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-4"><span class="crayon-h">&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-5"><span class="crayon-h">&nbsp;&nbsp;</span>l_sql<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-r">VARCHAR2</span>(32767);</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-6"><span class="crayon-h">&nbsp;&nbsp;</span>l_cursor<span class="crayon-h">&nbsp;&nbsp;</span>SYS_REFCURSOR;</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-7"><span class="crayon-h">&nbsp;&nbsp;</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-8"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">TYPE</span><span class="crayon-h"> </span>t_tab<span class="crayon-h"> </span><span class="crayon-r">IS</span><span class="crayon-h"> </span><span class="crayon-r">TABLE</span><span class="crayon-h"> </span><span class="crayon-r">OF</span><span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>;</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-9"><span class="crayon-h">&nbsp;&nbsp;</span>l_tab<span class="crayon-h"> </span>t_tab;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-10"><span class="crayon-r">BEGIN</span></div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-11"><span class="crayon-h">&nbsp;&nbsp;</span>l_time<span class="crayon-h"> </span>:=<span class="crayon-h"> </span>DBMS_UTILITY.get_time;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-12"><span class="crayon-h">&nbsp;&nbsp;</span>l_cpu<span class="crayon-h">&nbsp;&nbsp;</span>:=<span class="crayon-h"> </span>DBMS_UTILITY.get_cpu_time;</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-13">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-14"><span class="crayon-h">&nbsp;&nbsp;</span>l_sql<span class="crayon-h"> </span>:=<span class="crayon-h"> </span><span class="crayon-s">'WITH</span></div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-15"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FUNCTION with_function(p_id IN NUMBER) RETURN NUMBER IS</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-16"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEGIN</span></div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-17"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RETURN p_id;</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-18"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</span></div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-19"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT with_function(id)</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-20"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;&nbsp; t1'</span>;</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-21"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-22"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">OPEN</span><span class="crayon-h"> </span>l_cursor<span class="crayon-h"> </span><span class="crayon-r">FOR</span><span class="crayon-h"> </span>l_sql;</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-23"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">FETCH</span><span class="crayon-h"> </span>l_cursor</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-24"><span class="crayon-h">&nbsp;&nbsp;</span>BULK<span class="crayon-h"> </span><span class="crayon-k">COLLECT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>l_tab;</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-25"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">CLOSE</span><span class="crayon-h"> </span>l_cursor;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-26"><span class="crayon-h">&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-27"><span class="crayon-h">&nbsp;&nbsp;</span>DBMS_OUTPUT.put_line(<span class="crayon-s">'WITH_FUNCTION&nbsp;&nbsp;: '</span><span class="crayon-h"> </span>||</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-28"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-s">'Time='</span><span class="crayon-h"> </span>||<span class="crayon-h"> </span><span class="crayon-k">TO_CHAR</span>(DBMS_UTILITY.get_time<span class="crayon-h"> </span>-<span class="crayon-h"> </span>l_time)<span class="crayon-h"> </span>||<span class="crayon-h"> </span><span class="crayon-s">' hsecs '</span><span class="crayon-h"> </span>||</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-29"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-s">'CPU Time='</span><span class="crayon-h"> </span>||<span class="crayon-h"> </span>(DBMS_UTILITY.get_cpu_time<span class="crayon-h"> </span>-<span class="crayon-h"> </span>l_cpu)<span class="crayon-h"> </span>||<span class="crayon-h"> </span><span class="crayon-s">' hsecs '</span>);</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-30">&nbsp;</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-31"><span class="crayon-h">&nbsp;&nbsp;</span>l_time<span class="crayon-h"> </span>:=<span class="crayon-h"> </span>DBMS_UTILITY.get_time;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-32"><span class="crayon-h">&nbsp;&nbsp;</span>l_cpu<span class="crayon-h">&nbsp;&nbsp;</span>:=<span class="crayon-h"> </span>DBMS_UTILITY.get_cpu_time;</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-33">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-34"><span class="crayon-h">&nbsp;&nbsp;</span>l_sql<span class="crayon-h"> </span>:=<span class="crayon-h"> </span><span class="crayon-s">'SELECT normal_function(id)</span></div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-35"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;&nbsp; t1'</span>;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-36"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-37"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">OPEN</span><span class="crayon-h"> </span>l_cursor<span class="crayon-h"> </span><span class="crayon-r">FOR</span><span class="crayon-h"> </span>l_sql;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-38"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">FETCH</span><span class="crayon-h"> </span>l_cursor</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-39"><span class="crayon-h">&nbsp;&nbsp;</span>BULK<span class="crayon-h"> </span><span class="crayon-k">COLLECT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>l_tab;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-40"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">CLOSE</span><span class="crayon-h"> </span>l_cursor;</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-41"><span class="crayon-h">&nbsp;&nbsp;</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-42"><span class="crayon-h">&nbsp;&nbsp;</span>DBMS_OUTPUT.put_line(<span class="crayon-s">'NORMAL_FUNCTION: '</span><span class="crayon-h"> </span>||</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-43"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-s">'Time='</span><span class="crayon-h"> </span>||<span class="crayon-h"> </span><span class="crayon-k">TO_CHAR</span>(DBMS_UTILITY.get_time<span class="crayon-h"> </span>-<span class="crayon-h"> </span>l_time)<span class="crayon-h"> </span>||<span class="crayon-h"> </span><span class="crayon-s">' hsecs '</span><span class="crayon-h"> </span>||</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-44"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-s">'CPU Time='</span><span class="crayon-h"> </span>||<span class="crayon-h"> </span>(DBMS_UTILITY.get_cpu_time<span class="crayon-h"> </span>-<span class="crayon-h"> </span>l_cpu)<span class="crayon-h"> </span>||<span class="crayon-h"> </span><span class="crayon-s">' hsecs '</span>);</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-45"><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-46"><span class="crayon-r">END</span>;</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-47">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-48">WITH_FUNCTION<span class="crayon-h">&nbsp;&nbsp;</span>:<span class="crayon-h"> </span><span class="crayon-r">Time</span><span class="crayon-o">=</span>45<span class="crayon-h"> </span>hsecs<span class="crayon-h"> </span>CPU<span class="crayon-h"> </span><span class="crayon-r">Time</span><span class="crayon-o">=</span>39<span class="crayon-h"> </span>hsecs</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-49">NORMAL_FUNCTION:<span class="crayon-h"> </span><span class="crayon-r">Time</span><span class="crayon-o">=</span>129<span class="crayon-h"> </span>hsecs<span class="crayon-h"> </span>CPU<span class="crayon-h"> </span><span class="crayon-r">Time</span><span class="crayon-o">=</span>113<span class="crayon-h"> </span>hsecs</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c2e999235022-50">&nbsp;</div><div class="crayon-line" id="crayon-63f8298c33c2e999235022-51">PL<span class="crayon-o">/</span><span class="crayon-r">SQL</span><span class="crayon-h"> </span><span class="crayon-r">procedure</span><span class="crayon-h"> </span>successfully<span class="crayon-h"> </span>completed.</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p></p>
+<p>Из этого мы видим, что определение встроенной функции занимает приблизительно одну треть затраченного времени и времени процессора для завершения.</p>
+<p><a name="pragma"></a></p>
+<h2>Пример PRAGMA UDF</h2>
+<p>В ряде презентаций, предшествовавших официальному выпуску 12c, выступавшие упоминали PRAGMA UDF(User Defined Function), которая предположительно дает вам преимущества производительности встроенного PL/SQL, в то же время позволяя вам определять объект PL/SQL вне оператора SQL. Следующий код переопределяет предыдущую обычную функцию для использования этой прагмы.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f8298c33c30278568827" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Oracle PL/SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+CREATE OR REPLACE FUNCTION normal_function(p_id IN NUMBER) RETURN NUMBER IS
+  PRAGMA UDF;
+BEGIN
+  RETURN p_id;
+END;</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f8298c33c30278568827-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c30278568827-2">2</div><div class="crayon-num" data-line="crayon-63f8298c33c30278568827-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c30278568827-4">4</div><div class="crayon-num" data-line="crayon-63f8298c33c30278568827-5">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f8298c33c30278568827-1"><span class="crayon-r">CREATE</span><span class="crayon-h"> </span><span class="crayon-r">OR</span><span class="crayon-h"> </span><span class="crayon-r">REPLACE</span><span class="crayon-h"> </span><span class="crayon-r">FUNCTION</span><span class="crayon-h"> </span>normal_function(p_id<span class="crayon-h"> </span><span class="crayon-r">IN</span><span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>)<span class="crayon-h"> </span><span class="crayon-r">RETURN</span><span class="crayon-h"> </span><span class="crayon-r">NUMBER</span><span class="crayon-h"> </span><span class="crayon-r">IS</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c30278568827-2"><span class="crayon-h">&nbsp;&nbsp;</span>PRAGMA<span class="crayon-h"> </span>UDF;</div><div class="crayon-line" id="crayon-63f8298c33c30278568827-3"><span class="crayon-r">BEGIN</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c30278568827-4"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">RETURN</span><span class="crayon-h"> </span>p_id;</div><div class="crayon-line" id="crayon-63f8298c33c30278568827-5"><span class="crayon-r">END</span>;</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+<p>Как только функция скомпилирована, выполнение теста из предыдущего раздела для этой функции дает довольно интересные результаты.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f8298c33c38579589759" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Oracle PL/SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+SET SERVEROUTPUT ON
+DECLARE
+  l_time    PLS_INTEGER;
+  l_cpu     PLS_INTEGER;
+  
+  l_sql     VARCHAR2(32767);
+  l_cursor  SYS_REFCURSOR;
+  
+  TYPE t_tab IS TABLE OF NUMBER;
+  l_tab t_tab;
+BEGIN
+  l_time := DBMS_UTILITY.get_time;
+  l_cpu  := DBMS_UTILITY.get_cpu_time;
+
+  l_sql := 'WITH
+              FUNCTION with_function(p_id IN NUMBER) RETURN NUMBER IS
+              BEGIN
+                RETURN p_id;
+              END;
+            SELECT with_function(id)
+            FROM   t1';
+            
+  OPEN l_cursor FOR l_sql;
+  FETCH l_cursor
+  BULK COLLECT INTO l_tab;
+  CLOSE l_cursor;
+  
+  DBMS_OUTPUT.put_line('WITH_FUNCTION  : ' ||
+                       'Time=' || TO_CHAR(DBMS_UTILITY.get_time - l_time) || ' hsecs ' ||
+                       'CPU Time=' || (DBMS_UTILITY.get_cpu_time - l_cpu) || ' hsecs ');
+
+  l_time := DBMS_UTILITY.get_time;
+  l_cpu  := DBMS_UTILITY.get_cpu_time;
+
+  l_sql := 'SELECT normal_function(id)
+            FROM   t1';
+            
+  OPEN l_cursor FOR l_sql;
+  FETCH l_cursor
+  BULK COLLECT INTO l_tab;
+  CLOSE l_cursor;
+  
+  DBMS_OUTPUT.put_line('NORMAL_FUNCTION: ' ||
+                       'Time=' || TO_CHAR(DBMS_UTILITY.get_time - l_time) || ' hsecs ' ||
+                       'CPU Time=' || (DBMS_UTILITY.get_cpu_time - l_cpu) || ' hsecs ');
+ 
+END;
+
+WITH_FUNCTION  : Time=44 hsecs CPU Time=40 hsecs
+NORMAL_FUNCTION: Time=33 hsecs CPU Time=29 hsecs
+
+PL/SQL procedure successfully completed.</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-2">2</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-4">4</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-6">6</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-8">8</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-9">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-10">10</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-11">11</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-12">12</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-13">13</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-14">14</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-15">15</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-16">16</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-17">17</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-18">18</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-19">19</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-20">20</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-21">21</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-22">22</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-23">23</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-24">24</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-25">25</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-26">26</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-27">27</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-28">28</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-29">29</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-30">30</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-31">31</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-32">32</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-33">33</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-34">34</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-35">35</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-36">36</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-37">37</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-38">38</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-39">39</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-40">40</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-41">41</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-42">42</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-43">43</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-44">44</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-45">45</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-46">46</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-47">47</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-48">48</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-49">49</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-50">50</div><div class="crayon-num" data-line="crayon-63f8298c33c38579589759-51">51</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c38579589759-52">52</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f8298c33c38579589759-1"><span class="crayon-r">SET</span><span class="crayon-h"> </span>SERVEROUTPUT<span class="crayon-h"> </span><span class="crayon-r">ON</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-2"><span class="crayon-r">DECLARE</span></div><div class="crayon-line" id="crayon-63f8298c33c38579589759-3"><span class="crayon-h">&nbsp;&nbsp;</span>l_time<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-t">PLS_INTEGER</span>;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-4"><span class="crayon-h">&nbsp;&nbsp;</span>l_cpu<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-t">PLS_INTEGER</span>;</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-5"><span class="crayon-h">&nbsp;&nbsp;</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-6"><span class="crayon-h">&nbsp;&nbsp;</span>l_sql<span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-r">VARCHAR2</span>(32767);</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-7"><span class="crayon-h">&nbsp;&nbsp;</span>l_cursor<span class="crayon-h">&nbsp;&nbsp;</span>SYS_REFCURSOR;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-8"><span class="crayon-h">&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-63f8298c33c38579589759-9"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">TYPE</span><span class="crayon-h"> </span>t_tab<span class="crayon-h"> </span><span class="crayon-r">IS</span><span class="crayon-h"> </span><span class="crayon-r">TABLE</span><span class="crayon-h"> </span><span class="crayon-r">OF</span><span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-10"><span class="crayon-h">&nbsp;&nbsp;</span>l_tab<span class="crayon-h"> </span>t_tab;</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-11"><span class="crayon-r">BEGIN</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-12"><span class="crayon-h">&nbsp;&nbsp;</span>l_time<span class="crayon-h"> </span>:=<span class="crayon-h"> </span>DBMS_UTILITY.get_time;</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-13"><span class="crayon-h">&nbsp;&nbsp;</span>l_cpu<span class="crayon-h">&nbsp;&nbsp;</span>:=<span class="crayon-h"> </span>DBMS_UTILITY.get_cpu_time;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-14">&nbsp;</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-15"><span class="crayon-h">&nbsp;&nbsp;</span>l_sql<span class="crayon-h"> </span>:=<span class="crayon-h"> </span><span class="crayon-s">'WITH</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-16"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FUNCTION with_function(p_id IN NUMBER) RETURN NUMBER IS</span></div><div class="crayon-line" id="crayon-63f8298c33c38579589759-17"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEGIN</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-18"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RETURN p_id;</span></div><div class="crayon-line" id="crayon-63f8298c33c38579589759-19"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END;</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-20"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT with_function(id)</span></div><div class="crayon-line" id="crayon-63f8298c33c38579589759-21"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;&nbsp; t1'</span>;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-22"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-63f8298c33c38579589759-23"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">OPEN</span><span class="crayon-h"> </span>l_cursor<span class="crayon-h"> </span><span class="crayon-r">FOR</span><span class="crayon-h"> </span>l_sql;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-24"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">FETCH</span><span class="crayon-h"> </span>l_cursor</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-25"><span class="crayon-h">&nbsp;&nbsp;</span>BULK<span class="crayon-h"> </span><span class="crayon-k">COLLECT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>l_tab;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-26"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">CLOSE</span><span class="crayon-h"> </span>l_cursor;</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-27"><span class="crayon-h">&nbsp;&nbsp;</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-28"><span class="crayon-h">&nbsp;&nbsp;</span>DBMS_OUTPUT.put_line(<span class="crayon-s">'WITH_FUNCTION&nbsp;&nbsp;: '</span><span class="crayon-h"> </span>||</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-29"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-s">'Time='</span><span class="crayon-h"> </span>||<span class="crayon-h"> </span><span class="crayon-k">TO_CHAR</span>(DBMS_UTILITY.get_time<span class="crayon-h"> </span>-<span class="crayon-h"> </span>l_time)<span class="crayon-h"> </span>||<span class="crayon-h"> </span><span class="crayon-s">' hsecs '</span><span class="crayon-h"> </span>||</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-30"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-s">'CPU Time='</span><span class="crayon-h"> </span>||<span class="crayon-h"> </span>(DBMS_UTILITY.get_cpu_time<span class="crayon-h"> </span>-<span class="crayon-h"> </span>l_cpu)<span class="crayon-h"> </span>||<span class="crayon-h"> </span><span class="crayon-s">' hsecs '</span>);</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-31">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-32"><span class="crayon-h">&nbsp;&nbsp;</span>l_time<span class="crayon-h"> </span>:=<span class="crayon-h"> </span>DBMS_UTILITY.get_time;</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-33"><span class="crayon-h">&nbsp;&nbsp;</span>l_cpu<span class="crayon-h">&nbsp;&nbsp;</span>:=<span class="crayon-h"> </span>DBMS_UTILITY.get_cpu_time;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-34">&nbsp;</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-35"><span class="crayon-h">&nbsp;&nbsp;</span>l_sql<span class="crayon-h"> </span>:=<span class="crayon-h"> </span><span class="crayon-s">'SELECT normal_function(id)</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-36"><span class="crayon-s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;&nbsp; t1'</span>;</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-37"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-38"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">OPEN</span><span class="crayon-h"> </span>l_cursor<span class="crayon-h"> </span><span class="crayon-r">FOR</span><span class="crayon-h"> </span>l_sql;</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-39"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">FETCH</span><span class="crayon-h"> </span>l_cursor</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-40"><span class="crayon-h">&nbsp;&nbsp;</span>BULK<span class="crayon-h"> </span><span class="crayon-k">COLLECT</span><span class="crayon-h"> </span><span class="crayon-r">INTO</span><span class="crayon-h"> </span>l_tab;</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-41"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-r">CLOSE</span><span class="crayon-h"> </span>l_cursor;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-42"><span class="crayon-h">&nbsp;&nbsp;</span></div><div class="crayon-line" id="crayon-63f8298c33c38579589759-43"><span class="crayon-h">&nbsp;&nbsp;</span>DBMS_OUTPUT.put_line(<span class="crayon-s">'NORMAL_FUNCTION: '</span><span class="crayon-h"> </span>||</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-44"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-s">'Time='</span><span class="crayon-h"> </span>||<span class="crayon-h"> </span><span class="crayon-k">TO_CHAR</span>(DBMS_UTILITY.get_time<span class="crayon-h"> </span>-<span class="crayon-h"> </span>l_time)<span class="crayon-h"> </span>||<span class="crayon-h"> </span><span class="crayon-s">' hsecs '</span><span class="crayon-h"> </span>||</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-45"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-s">'CPU Time='</span><span class="crayon-h"> </span>||<span class="crayon-h"> </span>(DBMS_UTILITY.get_cpu_time<span class="crayon-h"> </span>-<span class="crayon-h"> </span>l_cpu)<span class="crayon-h"> </span>||<span class="crayon-h"> </span><span class="crayon-s">' hsecs '</span>);</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-46"><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-63f8298c33c38579589759-47"><span class="crayon-r">END</span>;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-48">&nbsp;</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-49">WITH_FUNCTION<span class="crayon-h">&nbsp;&nbsp;</span>:<span class="crayon-h"> </span><span class="crayon-r">Time</span><span class="crayon-o">=</span>44<span class="crayon-h"> </span>hsecs<span class="crayon-h"> </span>CPU<span class="crayon-h"> </span><span class="crayon-r">Time</span><span class="crayon-o">=</span>40<span class="crayon-h"> </span>hsecs</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-50">NORMAL_FUNCTION:<span class="crayon-h"> </span><span class="crayon-r">Time</span><span class="crayon-o">=</span>33<span class="crayon-h"> </span>hsecs<span class="crayon-h"> </span>CPU<span class="crayon-h"> </span><span class="crayon-r">Time</span><span class="crayon-o">=</span>29<span class="crayon-h"> </span>hsecs</div><div class="crayon-line" id="crayon-63f8298c33c38579589759-51">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c38579589759-52">PL<span class="crayon-o">/</span><span class="crayon-r">SQL</span><span class="crayon-h"> </span><span class="crayon-r">procedure</span><span class="crayon-h"> </span>successfully<span class="crayon-h"> </span>completed.</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p>Кажется, что автономная функция, использующая PRAGMA UDF, последовательно выполняет встроенную функцию.</p>
+<p>У меня сложилось впечатление, что вызов функции, определенной с помощью PRAGMA UDF напрямую из PL / SQL, не удастся. Это не похоже на случайность.</p>
+<p></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-63f8298c33c3b614344271" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important;">
+		
+			<div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="Toggle Line Numbers"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Toggle Plain Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Open Code In New Window"><div class="crayon-button-icon"></div></div><span class="crayon-language">Oracle PL/SQL</span></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 12px !important; line-height: 15px !important;">
+DECLARE
+  l_number NUMBER;
+BEGIN
+  l_number := normal_function(1);
+END;
+
+PL/SQL procedure successfully completed.</textarea></div>
+			<div class="crayon-main" style="">
+				<table class="crayon-table">
+					<tr class="crayon-row">
+				<td class="crayon-nums " data-settings="hide">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-63f8298c33c3b614344271-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c3b614344271-2">2</div><div class="crayon-num" data-line="crayon-63f8298c33c3b614344271-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c3b614344271-4">4</div><div class="crayon-num" data-line="crayon-63f8298c33c3b614344271-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-63f8298c33c3b614344271-6">6</div><div class="crayon-num" data-line="crayon-63f8298c33c3b614344271-7">7</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-63f8298c33c3b614344271-1"><span class="crayon-r">DECLARE</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c3b614344271-2"><span class="crayon-h">&nbsp;&nbsp;</span>l_number<span class="crayon-h"> </span><span class="crayon-r">NUMBER</span>;</div><div class="crayon-line" id="crayon-63f8298c33c3b614344271-3"><span class="crayon-r">BEGIN</span></div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c3b614344271-4"><span class="crayon-h">&nbsp;&nbsp;</span>l_number<span class="crayon-h"> </span>:=<span class="crayon-h"> </span>normal_function(1);</div><div class="crayon-line" id="crayon-63f8298c33c3b614344271-5"><span class="crayon-r">END</span>;</div><div class="crayon-line crayon-striped-line" id="crayon-63f8298c33c3b614344271-6">&nbsp;</div><div class="crayon-line" id="crayon-63f8298c33c3b614344271-7">PL<span class="crayon-o">/</span><span class="crayon-r">SQL</span><span class="crayon-h"> </span><span class="crayon-r">procedure</span><span class="crayon-h"> </span>successfully<span class="crayon-h"> </span>completed.</div></div></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p></p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+								<span class="cat-links">
+				Рубрика:&nbsp;<a href="category/oracle-programming.html" rel="category tag">Программирование Oracle / PLSQL</a>			</span>
+			
+					
+				<span class="sep"> | </span>
+		<span class="permalink"><a href="index.html%3Fp=8192.html" rel="bookmark" title="Прямая ссылка на Oracle PL/SQL оператор WITH">Permalink</a></span>
+			</footer><!-- .entry-meta -->
+<div class="gt_ct">
+<script data-rocketlazyloadscript='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' async ></script>
+<!-- Oracleplsql.ru (низ статья) 728 x 90 -->
+<style>
+.orclplsql_adapt_mobile_bottom { width: 320px; height: 100px; }
+@media(min-width: 500px) { .orclplsql_adapt_mobile_bottom { width: 468px; height: 60px; } }
+@media(min-width: 800px) { .orclplsql_adapt_mobile_bottom { width: 728px; height: 90px; } }
+</style> 
+<ins class="adsbygoogle orclplsql_adapt_mobile_bottom"
+     style="display:block"
+     data-ad-client="ca-pub-8777261894857145"
+     data-ad-slot="6588458128"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>	
+</div>
+<!--<input type="button" onclick="history.back();" value="Назад"/>-->
+<script data-rocketlazyloadscript='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' async ></script>
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="autorelaxed"
+     data-ad-client="ca-pub-8777261894857145"
+     data-ad-slot="6043257265"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</article><!-- #post-8192 -->
+
+
+				
+					<nav role="navigation" id="nav-below" class="site-navigation post-navigation">
+		<h1 class="assistive-text">Post navigation</h1>
+
+	
+		<div class="nav-previous"><a href="index.html%3Fp=7935.html" rel="prev"><span class="meta-nav">&laquo;</span> SQL функция SUM</a></div>		<div class="nav-next"><a href="index.html%3Fp=8212.html" rel="next">Oracle/PLSQL динамический SQL <span class="meta-nav">&raquo;</span></a></div>
+	
+	</nav><!-- #nav-below -->
+	
+
+			
+			</div><!-- #content .site-content -->
+		</div><!-- #primary .content-area -->
+
+	<div id="secondary" class="widget-area">
+					<div id="sidebar-1" class="sidebar" role="complementary">
+								<aside id="custom_html-13" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><script async src="https://cse.google.com/cse.js?cx=partner-pub-8777261894857145:5121821727"></script>
+<div class="gcse-searchbox-only"></div>
+</div></aside><aside id="nav_menu-4" class="widget widget_nav_menu"><h1 class="widget-title">ORACLE PL/SQL</h1><div class="menu-programmirovanie-oracle-plsql-container"><ul id="menu-programmirovanie-oracle-plsql" class="menu"><li id="menu-item-2217" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2217"><a href="index.html%3Fp=2157.html">Процедуры</a></li>
+<li id="menu-item-2218" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2218"><a href="index.html%3Fp=2144.html">Функции</a></li>
+<li id="menu-item-2216" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2216"><a href="index.html%3Fp=2198.html">Триггеры</a></li>
+<li id="menu-item-7466" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7466"><a href="index.html%3Fp=7394.html">Коллекции и записи</a></li>
+<li id="menu-item-2246" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2246"><a href="index.html%3Fp=2219.html">Курсоры</a></li>
+<li id="menu-item-7709" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7709"><a href="index.html%3Fp=7697.html">Пакеты</a></li>
+<li id="menu-item-8217" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8217"><a href="index.html%3Fp=8212.html">Динамический SQL</a></li>
+<li id="menu-item-2353" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2353"><a href="index.html%3Fp=2342.html">Последовательности</a></li>
+<li id="menu-item-2540" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2540"><a href="index.html%3Fp=2528.html">Таблицы и представления</a></li>
+<li id="menu-item-2677" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2677"><a href="index.html%3Fp=2673.html">Типы данных</a></li>
+<li id="menu-item-2449" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2449"><a href="index.html%3Fp=2445.html">Транзакции</a></li>
+<li id="menu-item-2316" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2316"><a href="index.html%3Fp=2313.html">Условные операторы</a></li>
+<li id="menu-item-2340" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2340"><a href="index.html%3Fp=2337.html">Циклы</a></li>
+<li id="menu-item-8302" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8302"><a href="index.html%3Fp=8287.html">Блоки PL/SQL</a></li>
+</ul></div></aside><aside id="nav_menu-2" class="widget widget_nav_menu"><h1 class="widget-title">ФУНКЦИИ ORACLE/PLSQL</h1><div class="menu-funkczii-oracle-pl-sql-container"><ul id="menu-funkczii-oracle-pl-sql" class="menu"><li id="menu-item-4" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-4"><a title="function category" href="index.html">По категориям</a></li>
+<li id="menu-item-7402" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7402"><a href="index.html%3Fp=7354.html">Аналитические</a></li>
+<li id="menu-item-7405" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7405"><a href="index.html%3Fp=7419.html">Символьные / строковые</a></li>
+<li id="menu-item-7406" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7406"><a href="index.html%3Fp=7446.html">Числовые / математические</a></li>
+<li id="menu-item-7403" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7403"><a href="index.html%3Fp=7373.html">Дата / время</a></li>
+<li id="menu-item-7407" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7407"><a href="index.html%3Fp=7408.html">Преобразование</a></li>
+<li id="menu-item-7404" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7404"><a href="index.html%3Fp=7363.html">Вспомогательные</a></li>
+</ul></div></aside><aside id="custom_html-14" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><script data-rocketlazyloadscript='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js' async ></script>
+<!-- Oracleplsql.ru боковой 300х600 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8777261894857145"
+     data-ad-slot="1425058522"
+     data-ad-format="auto"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!-- hit.ua -->
+<a href='http://hit.ua/?x=128731' target='_blank' rel="noopener">
+<script language="javascript" type="text/javascript"><!--
+Cd=document;Cr="&"+Math.random();Cp="&s=1";
+Cd.cookie="b=b";if(Cd.cookie)Cp+="&c=1";
+Cp+="&t="+(new Date()).getTimezoneOffset();
+if(self!=top)Cp+="&f=1";
+//--></script>
+<script language="javascript1.1" type="text/javascript"><!--
+if(navigator.javaEnabled())Cp+="&j=1";
+//--></script>
+<script language="javascript1.2" type="text/javascript"><!--
+if(typeof(screen)!='undefined')Cp+="&w="+screen.width+"&h="+
+screen.height+"&d="+(screen.colorDepth?screen.colorDepth:screen.pixelDepth);
+//--></script>
+<script language="javascript" type="text/javascript"><!--
+Cd.write("<sc"+"ript src='//c.hit.ua/hit?i=128731&g=0&x=3"+Cp+Cr+
+"&r="+escape(Cd.referrer)+"&u="+escape(window.location.href)+"'></sc"+"ript>");
+//--></script></a>
+<!-- / hit.ua -->
+
+<!-- Yandex.Metrika counter -->
+
+<noscript><div><img src="https://mc.yandex.ru/watch/26721072" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</div></aside>			</div><!-- #sidebar-right -->
+		
+			</div>
+
+	</div><!-- #main .site-main -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+			<div>&copy; 2014-2022 Oracle PL/SQL</div>		</div>
+			</footer><!-- #colophon .site-footer -->
+</div><!-- #page .hfeed .site -->
+
+<script type='text/javascript' id='rocket-browser-checker-js-after'>
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type='text/javascript' id='rocket-delay-js-js-after'>
+(function() {
+"use strict";var e=function(){function n(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(e,t,r){return t&&n(e.prototype,t),r&&n(e,r),e}}();function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function r(e,t){n(this,r),this.attrName="data-rocketlazyloadscript",this.browser=t,this.options=this.browser.options,this.triggerEvents=e,this.userEventListener=this.triggerListener.bind(this)}return e(r,[{key:"init",value:function(){this._addEventListener(this)}},{key:"reset",value:function(){this._removeEventListener(this)}},{key:"_addEventListener",value:function(t){this.triggerEvents.forEach(function(e){return window.addEventListener(e,t.userEventListener,t.options)})}},{key:"_removeEventListener",value:function(t){this.triggerEvents.forEach(function(e){return window.removeEventListener(e,t.userEventListener,t.options)})}},{key:"_loadScriptSrc",value:function(){var r=this,e=document.querySelectorAll("script["+this.attrName+"]");0!==e.length&&Array.prototype.slice.call(e).forEach(function(e){var t=e.getAttribute(r.attrName);e.setAttribute("src",t),e.removeAttribute(r.attrName)}),this.reset()}},{key:"triggerListener",value:function(){this._loadScriptSrc(),this._removeEventListener(this)}}],[{key:"run",value:function(){RocketBrowserCompatibilityChecker&&new r(["keydown","mouseover","touchmove","touchstart"],new RocketBrowserCompatibilityChecker({passive:!0})).init()}}]),r}();t.run();
+}());
+</script>
+
+
+<script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"></script>
+<script src="wp-content/cache/min/1/5da3b72814b1a36896cd845e11329e29.js" data-minify="1" defer></script></body>
+</html>
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1677207948 -->
