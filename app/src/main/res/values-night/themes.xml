@@ -1,7 +1,7 @@
 <!--suppress XmlUnusedNamespaceDeclaration -->
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.OraclePLSQL" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.OraclePLSQL" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
