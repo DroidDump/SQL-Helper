@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -22,9 +23,13 @@ class MainActivity : AppCompatActivity() {
 
         binding.webView.webViewClient = MyWebViewClient()
 
-        val webSettings = binding.webView.settings
-        @SuppressLint("SetJavaScriptEnabled")
-        webSettings.javaScriptEnabled = true
+        binding.webView.apply {
+            with(settings) {
+                this.javaScriptEnabled = true
+                this.builtInZoomControls = true
+                this.displayZoomControls = false
+            }
+        }
 
         if (savedInstanceState == null) {
             binding.webView.loadUrl("file:///android_asset/index.html")
